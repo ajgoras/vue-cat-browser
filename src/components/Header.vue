@@ -1,26 +1,36 @@
 <script setup lang="ts"></script>
 
 <template>
-  <header>
-    <img alt="App logo" class="logo" src="@/assets/logo.png" />
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
-    </nav>
-  </header>
+  <div id="main">
+    <header>
+      <img alt="App logo" class="logo" src="@/assets/logo.png" />
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/about">About</RouterLink>
+      </nav>
+      <div class="browser-cats-container">
+        <RouterLink to="/">Browse Cats</RouterLink>
+      </div>
+    </header>
+  </div>
 </template>
 
 <style scoped>
+#main {
+  margin: auto;
+  width: 60%;
+}
 header {
   outline: 2px solid rgba(0, 0, 0, 0.2);
-  margin: -15px 11% 0px 11%;
+  margin: -15px 0 0 0;
   padding-top: 15px;
   border-radius: 15px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  transition: outline .3s ease-in-out;
+  transition: outline 0.3s ease-in-out;
 }
-header:hover{
+header:hover {
   outline: 2px solid rgba(0, 0, 0, 0.471);
 }
 
@@ -28,46 +38,133 @@ header:hover{
   border-radius: 50px;
   width: 265px;
   height: auto;
+  content: url('@/assets/logo.png');
+  user-select: none;
+  pointer-events: none;
 }
 
-nav{
-  position: sticky;
-  margin-left: 70px;
+nav {
   display: flex;
-  gap: 25px;
+  gap: 5vw;
   font-size: 16px;
   font-weight: bold;
 }
 
-nav a{
+.browser-cats-container {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+.browser-cats-container a {
+  padding: 6px 8px 6px 8px;
+  border: 2px var(--green-main-color-darker) solid;
+  border-radius: 50px;
+}
+
+.browser-cats-container a:hover {
+  background-color: var(--green-main-color);
+  color: whitesmoke;
+}
+
+nav a {
   position: relative;
 }
 
-nav a:hover{
+nav a:hover {
   color: var(--green-main-color-darker);
 }
 
-nav a::after{
+nav a::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 0%;
-  height: .15em;
+  height: 0.15em;
   border-radius: 10px;
   background-color: var(--green-main-color-darker);
   height: 2px;
-  transition: .2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
-nav a:hover::after{
-  width: 100%
+nav a:hover::after {
+  width: 100%;
 }
 
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
+@media (max-width: 1024px) {
+  #main {
+    margin: auto;
+    width: 70%;
+  }
+}
+@media (max-width: 820px) {
+  #main {
+    margin: auto;
+    width: 75%;
+  }
+}
+@media (max-width: 768px) {
+  #main {
+    margin: auto;
+    width: 85%;
+  }
+  header {
+    zoom: 0.85;
+  }
+  .logo {
+    border-radius: 50px;
+    width: 200px;
+    height: auto;
+  }
+}
+
+@media (max-width: 540px) {
+  #main {
+    margin: auto;
+    width: 90%;
+  }
+  header {
+    zoom: 0.8;
+  }
+  nav {
+    gap: 3vw;
+  }
+  .browser-cats-container {
+    margin-right: 15px;
+  }
+}
+
+@media (max-width: 420px) {
+  #main {
+    margin: auto;
+    width: 95%;
+  }
+  header {
+    zoom: 0.75;
+  }
+  nav {
+    gap: 2vw;
+  }
+  .browser-cats-container {
+    margin-right: 10px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo {
+    content: url('@/assets/logo-dark.png');
+  }
+  header {
+    outline: 2px solid rgba(154, 154, 154, 0.2);
+  }
+  header:hover {
+    outline: 2px solid rgba(255, 255, 255, 0.296);
+  }
+  nav a:hover {
+    color: var(--green-main-color-lighter);
+  }
+  nav a::after {
+    background-color: var(--green-main-color-lighter);
   }
 }
 </style>

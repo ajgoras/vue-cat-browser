@@ -113,7 +113,7 @@ nav a:hover::after {
   }
   .logo {
     border-radius: 50px;
-    width: 200px;
+    width: 240px;
     height: auto;
   }
 }

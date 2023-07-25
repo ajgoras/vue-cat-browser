@@ -9,7 +9,7 @@
         <RouterLink to="/about">About</RouterLink>
       </nav>
       <div class="browser-cats-container">
-        <RouterLink to="/">Browse Cats</RouterLink>
+        <RouterLink to="/browse">Browse Cats</RouterLink>
       </div>
     </header>
   </div>

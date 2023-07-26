@@ -53,18 +53,23 @@ header:hover {
   content: url('@/assets/logo.png');
   user-select: none;
 }
+.logo:hover{
+  cursor: pointer;
+}
 
 nav {
   display: flex;
   gap: 5vw;
   font-size: 16px;
   font-weight: bold;
+  user-select: none;
 }
 
 .browser-cats-container {
   font-size: 16px;
   font-weight: bold;
   margin-right: 20px;
+  user-select: none;
 }
 .browser-cats-container a {
   padding: 6px 8px 6px 8px;

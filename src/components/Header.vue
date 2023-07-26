@@ -1,9 +1,21 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import router from '@/router'
+
+const navigateToHome = () => {
+  router.push('/')
+}
+</script>
 
 <template>
   <div id="main">
     <header>
-      <img alt="App logo" class="logo" src="@/assets/logo.png" />
+      <img
+        draggable="false"
+        @click="navigateToHome"
+        alt="App logo"
+        class="logo"
+        src="@/assets/logo.png"
+      />
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
@@ -40,7 +52,6 @@ header:hover {
   height: auto;
   content: url('@/assets/logo.png');
   user-select: none;
-  pointer-events: none;
 }
 
 nav {

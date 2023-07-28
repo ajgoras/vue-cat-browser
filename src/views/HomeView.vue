@@ -25,8 +25,13 @@ import HomeGridComponent from '@/components/HomeGridComponent.vue'
           src="@/assets/cats-paw.png"
         />
       </div>
-      <div>
-        <!-- <img src="@/assets/cat-home-side.jpg"> -->
+      <div class="cat-home-side-container">
+        <img
+          class="cat-home-side"
+          alt="cat-photo"
+          draggable="false"
+          src="@/assets/cat-home-side.png"
+        />
       </div>
     </header>
   </main>
@@ -57,7 +62,7 @@ h1:nth-of-type(3) {
   top: 20vmin;
 }
 
-.cat-icon-logo-container{
+.cat-icon-logo-container {
   position: absolute;
   top: 1vmin;
   left: 30vmin;
@@ -77,7 +82,7 @@ h1:nth-of-type(3) {
   top: -4vmin;
 }
 
-.cats-paw-logo-container{
+.cats-paw-logo-container {
   position: absolute;
   top: 24vmin;
   left: 53vmin;
@@ -97,9 +102,38 @@ h1:nth-of-type(3) {
   top: -4.2vmin;
 }
 
+.cat-home-side-container {
+  margin: auto;
+  margin-right: 3vmin;
+}
+
+.cat-home-side {
+  border-radius: 20px;
+  width: 50vmin;
+  height: auto;
+}
+
+@media (max-width: 1100px) {
+  header {
+    flex-direction: column;
+  }
+  .cat-home-side-container {
+    margin: auto;
+    margin-right: 5vmin;
+    margin-top: -25vmin;
+    z-index: 2;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   h1 {
     color: white;
+  }
+  .cat-icon-logo-container {
+    background-color: var(--green-main-color-darker);
+  }
+  .cats-paw-logo-container {
+    background-color: var(--green-main-color-darker);
   }
 }
 </style>

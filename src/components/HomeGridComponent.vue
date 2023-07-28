@@ -41,6 +41,7 @@
   overflow: hidden;
   background: linear-gradient(to bottom left, rgba(0, 0, 0, 0.186), transparent);
   padding: 1px;
+  flex-shrink: 0;
 }
 
 .grid div {

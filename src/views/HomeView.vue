@@ -25,6 +25,9 @@ import HomeGridComponent from '@/components/HomeGridComponent.vue'
           src="@/assets/cats-paw.png"
         />
       </div>
+      <div>
+        <!-- <img src="@/assets/cat-home-side.jpg"> -->
+      </div>
     </header>
   </main>
 </template>
@@ -32,6 +35,7 @@ import HomeGridComponent from '@/components/HomeGridComponent.vue'
 <style scoped>
 header {
   position: relative;
+  display: flex;
 }
 
 h1 {
@@ -40,6 +44,7 @@ h1 {
   font-size: 9.5vmin;
   margin-left: 6vmin;
   color: black;
+  margin-top: 18vmin;
 }
 
 h1:nth-of-type(1) {
@@ -61,6 +66,7 @@ h1:nth-of-type(3) {
   width: 15vmin;
   border-radius: 10px;
   box-shadow: 6px 8px 8px rgba(0, 0, 0, 0.158);
+  margin-top: 18vmin;
 }
 
 .cat-icon-logo {
@@ -80,6 +86,7 @@ h1:nth-of-type(3) {
   width: 9vmin;
   border-radius: 1000px;
   box-shadow: 6px 8px 8px rgba(0, 0, 0, 0.158);
+  margin-top: 18vmin;
 }
 
 .cats-paw-logo {

@@ -84,10 +84,10 @@ h1:nth-of-type(3) {
 
 .cats-paw-logo {
   position: absolute;
-  height: 12vmin;
-  width: 12vmin;
-  left: -1.4vmin;
-  top: -4vmin;
+  height: 13vmin;
+  width: 13vmin;
+  left: -1.95vmin;
+  top: -4.2vmin;
 }
 
 @media (prefers-color-scheme: dark) {

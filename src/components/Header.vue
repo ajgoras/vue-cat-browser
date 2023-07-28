@@ -18,7 +18,7 @@ const navigateToHome = () => {
       />
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/about">Credits</RouterLink>
       </nav>
       <div class="browser-cats-container">
         <RouterLink to="/browse">Browse Cats</RouterLink>

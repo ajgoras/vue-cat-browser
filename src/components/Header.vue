@@ -53,7 +53,7 @@ header:hover {
   content: url('@/assets/logo.png');
   user-select: none;
 }
-.logo:hover{
+.logo:hover {
   cursor: pointer;
 }
 
@@ -148,9 +148,14 @@ nav a:hover::after {
   .browser-cats-container {
     margin-right: 15px;
   }
+  .logo {
+    border-radius: 50px;
+    width: 220px;
+    height: auto;
+  }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 440px) {
   #main {
     margin: auto;
     width: 95%;
@@ -163,6 +168,11 @@ nav a:hover::after {
   }
   .browser-cats-container {
     margin-right: 10px;
+  }
+  .logo {
+    border-radius: 50px;
+    width: 200px;
+    height: auto;
   }
 }
 

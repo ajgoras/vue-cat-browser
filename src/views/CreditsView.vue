@@ -5,7 +5,19 @@ const materials = [
     imageLink: '../assets/cat_icon.png',
     attributeInfo: `<a href="https://www.flaticon.com/free-icons/cat" title="cat icons">Cat icons created by AomAm - Flaticon</a>`,
     href: `https://www.flaticon.com/free-icons/cat`,
-    anchorValue: "Cat icons created by AomAm - Flaticon"
+    anchorValue: 'Cat icons created by AomAm - Flaticon'
+  },
+  {
+    imageLink: '../assets/cats-paw.png',
+    attributeInfo: `<a href="https://www.flaticon.com/free-icons/paw" title="paw icons">Paw icons created by logisstudio - Flaticon</a>`,
+    href: `https://www.flaticon.com/free-icons/paw`,
+    anchorValue: 'Paw icons created by logisstudio - Flaticon'
+  },
+  {
+    imageLink: '../assets/cat-home-side.png',
+    attributeInfo: `<a href="https://www.freeiconspng.com/img/40349">Cat Free Icon Vectors Download</a>`,
+    href: `https://www.freeiconspng.com/img/40349`,
+    anchorValue: 'Cat Free Icon Vectors Download created by Ahkâm'
   }
 ]
 </script>

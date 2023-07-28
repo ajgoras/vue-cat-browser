@@ -125,6 +125,20 @@ h1:nth-of-type(3) {
   }
 }
 
+@media (pointer: coarse) {
+  .cats-paw-logo-container {
+    position: absolute;
+    top: 24vmin;
+    left: 58vmin;
+    background-color: var(--green-main-color);
+    height: 8vmin;
+    width: 9vmin;
+    border-radius: 1000px;
+    box-shadow: 6px 8px 8px rgba(0, 0, 0, 0.158);
+    margin-top: 18vmin;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   h1 {
     color: white;

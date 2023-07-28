@@ -111,6 +111,7 @@ h1:nth-of-type(3) {
   border-radius: 20px;
   width: 50vmin;
   height: auto;
+  min-width: 250px;
 }
 
 @media (max-width: 1100px) {
@@ -120,22 +121,43 @@ h1:nth-of-type(3) {
   .cat-home-side-container {
     margin: auto;
     margin-right: 5vmin;
-    margin-top: -25vmin;
+    margin-top: -30vmin;
     z-index: 2;
   }
 }
 
-@media (pointer: coarse) {
+@media (max-width: 480px) {
+  h1 {
+    font-size: 12vmin;
+  }
+
+  h1:nth-of-type(1) {
+    top: -3vmin;
+  }
+  h1:nth-of-type(2) {
+    top: 8.5vmin;
+  }
+  h1:nth-of-type(3) {
+    top: 21vmin;
+  }
+  .cat-icon-logo-container {
+    top: 3vmin;
+    left: 32vmin;
+  }
+
   .cats-paw-logo-container {
-    position: absolute;
-    top: 24vmin;
-    left: 58vmin;
-    background-color: var(--green-main-color);
-    height: 8vmin;
-    width: 9vmin;
-    border-radius: 1000px;
-    box-shadow: 6px 8px 8px rgba(0, 0, 0, 0.158);
-    margin-top: 18vmin;
+    top: 26.5vmin;
+    left: 71vmin;
+  }
+
+  .cat-home-side-container {
+    margin-top: -35vmin;
+  }
+}
+
+@media (max-width: 400px) {
+  .cat-home-side-container {
+    margin-top: -42vmin;
   }
 }
 

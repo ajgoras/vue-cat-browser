@@ -41,6 +41,7 @@ header {
   justify-content: space-between;
   align-items: center;
   transition: outline 0.3s ease-in-out;
+  min-height: 80px;
 }
 header:hover {
   outline: 2px solid rgba(0, 0, 0, 0.471);
@@ -72,7 +73,7 @@ nav {
   user-select: none;
 }
 .browser-cats-container a {
-  padding: 6px 8px 6px 8px;
+  padding: 7px 8px 7px 8px;
   border: 2px var(--green-main-color-darker) solid;
   border-radius: 50px;
 }

@@ -33,6 +33,8 @@ import HomeGridComponent from '@/components/HomeGridComponent.vue'
           src="@/assets/cat-home-side.png"
         />
       </div>
+      <h2>Browse beautiful cats, upload new, edit</h2>
+      <h2>or remove existing cats 🐈‍⬛</h2>
     </header>
   </main>
 </template>
@@ -50,6 +52,18 @@ h1 {
   margin-left: 6vmin;
   color: black;
   margin-top: 18vmin;
+}
+
+h2 {
+  font-family: 'Shadows Into Light', cursive;
+  position: absolute;
+  font-size: 4vmin;
+  margin-left: 6.5vmin;
+  color: black;
+  margin-top: 52vmin;
+}
+h2:nth-of-type(2) {
+  margin-top: 56vmin;
 }
 
 h1:nth-of-type(1) {
@@ -131,6 +145,14 @@ h1:nth-of-type(3) {
     font-size: 12vmin;
   }
 
+  h2{
+    margin-top: 54vmin;
+    font-size: 5.5vmin;
+  }
+  h2:nth-of-type(2){
+    margin-top: 59vmin;
+  }
+
   h1:nth-of-type(1) {
     top: -3vmin;
   }
@@ -151,13 +173,13 @@ h1:nth-of-type(3) {
   }
 
   .cat-home-side-container {
-    margin-top: -35vmin;
+    margin-top: -32vmin;
   }
 }
 
 @media (max-width: 400px) {
   .cat-home-side-container {
-    margin-top: -42vmin;
+    margin-top: -40vmin;
   }
 }
 
@@ -171,7 +193,7 @@ h1:nth-of-type(3) {
   .cats-paw-logo-container {
     background-color: var(--green-main-color-darker);
   }
-  .cats-paw-logo{
+  .cats-paw-logo {
     content: url('@/assets/cats-paw-inverted.png');
   }
 }

@@ -171,5 +171,8 @@ h1:nth-of-type(3) {
   .cats-paw-logo-container {
     background-color: var(--green-main-color-darker);
   }
+  .cats-paw-logo{
+    content: url('@/assets/cats-paw-inverted.png');
+  }
 }
 </style>

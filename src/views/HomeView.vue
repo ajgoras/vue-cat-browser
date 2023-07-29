@@ -145,11 +145,11 @@ h1:nth-of-type(3) {
     font-size: 12vmin;
   }
 
-  h2{
+  h2 {
     margin-top: 54vmin;
     font-size: 5.5vmin;
   }
-  h2:nth-of-type(2){
+  h2:nth-of-type(2) {
     margin-top: 59vmin;
   }
 
@@ -184,7 +184,8 @@ h1:nth-of-type(3) {
 }
 
 @media (prefers-color-scheme: dark) {
-  h1 {
+  h1,
+  h2 {
     color: white;
   }
   .cat-icon-logo-container {

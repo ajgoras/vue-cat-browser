@@ -33,6 +33,11 @@ import HomeGridComponent from '@/components/HomeGridComponent.vue'
           src="@/assets/cat-home-side.png"
         />
       </div>
+      <h2>Browse beautiful cats, upload new, edit</h2>
+      <h2>or remove existing cats 🐈‍⬛</h2>
+      <div class="browser-cats-container">
+        <RouterLink to="/browse">Start Browsing Cats</RouterLink>
+      </div>
     </header>
   </main>
 </template>
@@ -50,6 +55,18 @@ h1 {
   margin-left: 6vmin;
   color: black;
   margin-top: 18vmin;
+}
+
+h2 {
+  font-family: 'Shadows Into Light', cursive;
+  position: absolute;
+  font-size: 4vmin;
+  margin-left: 6.5vmin;
+  color: black;
+  margin-top: 52vmin;
+}
+h2:nth-of-type(2) {
+  margin-top: 56vmin;
 }
 
 h1:nth-of-type(1) {
@@ -114,6 +131,27 @@ h1:nth-of-type(3) {
   min-width: 250px;
 }
 
+.browser-cats-container {
+  position: absolute;
+  top: 67vmin;
+  left: 10vmin;
+  font-size: 3.5vmin;
+  font-weight: bold;
+  user-select: none;
+}
+.browser-cats-container a {
+  padding: 2vmin 2.5vmin 2vmin 2.5vmin;
+  border: 2px var(--green-main-color-darker) solid;
+  border-radius: 50px;
+  background-color: var(--green-main-color);
+  color: whitesmoke;
+}
+
+.browser-cats-container a:hover {
+  background-color: whitesmoke;
+  color: var(--green-main-color);
+}
+
 @media (max-width: 1100px) {
   header {
     flex-direction: column;
@@ -129,6 +167,14 @@ h1:nth-of-type(3) {
 @media (max-width: 480px) {
   h1 {
     font-size: 12vmin;
+  }
+
+  h2 {
+    margin-top: 54vmin;
+    font-size: 5.5vmin;
+  }
+  h2:nth-of-type(2) {
+    margin-top: 59vmin;
   }
 
   h1:nth-of-type(1) {
@@ -151,18 +197,26 @@ h1:nth-of-type(3) {
   }
 
   .cat-home-side-container {
-    margin-top: -35vmin;
+    margin-top: -25vmin;
+  }
+
+  .browser-cats-container {
+    top: 72.5vmin;
+    left: 6vmin;
+    font-size: 3.5vmin;
   }
 }
 
 @media (max-width: 400px) {
   .cat-home-side-container {
-    margin-top: -42vmin;
+    margin-top: -35vmin;
+    margin-right: 2vmin;
   }
 }
 
 @media (prefers-color-scheme: dark) {
-  h1 {
+  h1,
+  h2 {
     color: white;
   }
   .cat-icon-logo-container {
@@ -171,8 +225,15 @@ h1:nth-of-type(3) {
   .cats-paw-logo-container {
     background-color: var(--green-main-color-darker);
   }
-  .cats-paw-logo{
+  .cats-paw-logo {
     content: url('@/assets/cats-paw-inverted.png');
+  }
+  .browser-cats-container a {
+    background-color: var(--green-main-color-darker);
+  }
+  .browser-cats-container a:hover {
+    background-color: var(--vt-c-black-soft);
+    color: var(--green-main-color-lighter);
   }
 }
 </style>

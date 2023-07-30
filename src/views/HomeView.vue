@@ -32,6 +32,7 @@ import HomeGridComponent from '@/components/HomeGridComponent.vue'
           draggable="false"
           src="@/assets/cat-home-side.png"
         />
+        <img class="cat-home-side-heart" alt="heart" draggable="false" src="@/assets/heart.png" />
       </div>
       <h2>Browse beautiful cats, upload new, edit</h2>
       <h2>or remove existing cats 🐈‍⬛</h2>
@@ -120,6 +121,7 @@ h1:nth-of-type(3) {
 }
 
 .cat-home-side-container {
+  position: relative;
   margin: auto;
   margin-right: 3vmin;
 }
@@ -129,6 +131,17 @@ h1:nth-of-type(3) {
   width: 50vmin;
   height: auto;
   min-width: 250px;
+}
+
+.cat-home-side-heart {
+  position: absolute;
+  margin: auto;
+  top: 5vmin;
+  right: 10vmin;
+  width: 10vmin;
+  height: auto;
+  border-radius: 1000px;
+  box-shadow: 6px 8px 8px rgba(0, 0, 0, 0.158);
 }
 
 .browser-cats-container {
@@ -211,6 +224,9 @@ h1:nth-of-type(3) {
   .cat-home-side-container {
     margin-top: -35vmin;
     margin-right: 2vmin;
+  }
+  .cat-home-side-heart {
+    width: 12vmin;
   }
 }
 

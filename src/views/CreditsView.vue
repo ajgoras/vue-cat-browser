@@ -18,6 +18,12 @@ const materials = [
     attributeInfo: `<a href="https://www.freeiconspng.com/img/40349">Cat Free Icon Vectors Download</a>`,
     href: `https://www.freeiconspng.com/img/40349`,
     anchorValue: 'Cat Free Icon Vectors Download created by Ahkâm'
+  },
+  {
+    imageLink: '../assets/heart.png',
+    attributeInfo: `<a href="https://www.flaticon.com/free-icons/heart" title="heart icons">Heart icons created by Fathema Khanom - Flaticon</a>`,
+    href: `https://www.flaticon.com/free-icons/heart`,
+    anchorValue: 'Heart icons created by Fathema Khanom - Flaticon'
   }
 ]
 </script>

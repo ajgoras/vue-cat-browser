@@ -2,17 +2,41 @@
 import CatComponent from '@/components/CatComponent.vue'
 import type { CatType } from '@/types/CatType'
 import axios from 'axios'
-import { onBeforeMount, ref, type Ref } from 'vue'
+import { onBeforeMount, ref, watch, type Ref } from 'vue'
 
 const cats: Ref<CatType[]> = ref([])
+const activeCat: Ref<string> = ref('')
+
+var observer = new IntersectionObserver(onIntersection, {
+  root: null,
+  threshold: 0.8
+})
+function onIntersection(entries: any) {
+  entries.forEach((entry: any) => (activeCat.value = entry.target.id.substring(4)))
+}
+setTimeout(() => {
+  cats.value.forEach((cat) => {
+    observer.observe(document.getElementById(`cat-${cat.id}`)!)
+  })
+}, 100)
 
 const getCats = async () => {
-  const { data } = await axios.get('http://localhost:5143/api/cats')
+  const { data }: { data: CatType[] } = await axios.get('http://localhost:5143/api/cats')
   return data
 }
 
 onBeforeMount(async () => {
   cats.value = await getCats()
+  setTimeout(() => {
+    activeCat.value = cats.value[0].id
+  }, 70)
+})
+
+watch(activeCat, () => {
+  const catName = cats.value.find(({ id }) => id === activeCat.value)
+  if (catName) {
+    activeCat.value = catName?.name
+  }
 })
 </script>
 
@@ -21,10 +45,15 @@ onBeforeMount(async () => {
     <h1>Cats</h1>
     <div class="cats-container">
       <div class="cats-list">
-        <p class="cat-name" v-for="cat of cats">{{ cat.name }}</p>
+        <p class="cat-name">{{ activeCat }}</p>
       </div>
-      <div>
-        <CatComponent :key="cat.id" v-for="cat of cats" :cat="cat"></CatComponent>
+      <div class="cat-component-container">
+        <CatComponent
+          :id="`cat-` + cat.id"
+          :key="cat.id"
+          v-for="cat of cats"
+          :cat="cat"
+        ></CatComponent>
       </div>
     </div>
   </div>
@@ -34,15 +63,19 @@ onBeforeMount(async () => {
 #main {
   margin-top: 50px;
   margin-left: 50px;
-}
-
-.cats-container {
-  display: grid;
-  grid-template-columns: repeat(2, 30%);
+  margin-right: 50vmin;
 }
 
 .cats-list {
-  margin-top: 10vmin;
+  position: fixed;
+  top: 45vmin;
+  left: 10vmin;
+}
+
+.cat-component-container {
+  width: 60%;
+  margin: auto;
+  margin-right: -10vmin;
 }
 
 .cat-name {

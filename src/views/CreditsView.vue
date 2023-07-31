@@ -24,7 +24,13 @@ const materials = [
     attributeInfo: `<a href="https://www.flaticon.com/free-icons/heart" title="heart icons">Heart icons created by Fathema Khanom - Flaticon</a>`,
     href: `https://www.flaticon.com/free-icons/heart`,
     anchorValue: 'Heart icons created by Fathema Khanom - Flaticon'
-  }
+  },
+  {
+    imageLink: '../assets/sad-cat.png',
+    attributeInfo: `<a href="https://www.flaticon.com/free-icons/cat" title="cat icons">Cat icons created by AomAm - Flaticon</a>`,
+    href: `https://www.flaticon.com/free-icons/cat`,
+    anchorValue: 'Cat icons created by AomAm - Flaticon'
+  },
 ]
 </script>
 

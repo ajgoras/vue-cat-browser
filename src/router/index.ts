@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import ErrorView from '../views/ErrorView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,6 +22,11 @@ const router = createRouter({
       path: '/browse',
       name: 'browse',
       component: () => import('../views/BrowseCatsView.vue')
+    },
+    {
+      path: "/:catchAll(.*)",
+      name: "error",
+      component: ErrorView,
     }
   ]
 })

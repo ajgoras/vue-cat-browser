@@ -10,12 +10,14 @@ public class CatsController : ControllerBase
 {
   private readonly CatsService _catsService;
 
-  public CatsController(CatsService catsService) =>
-      _catsService = catsService;
+  public CatsController(CatsService catsService)
+  {
+    _catsService = catsService;
+  }
 
   [HttpGet]
   public async Task<List<Cat>> Get() =>
-      await _catsService.GetAsync();
+        await _catsService.GetAsync();
 
   [HttpGet("{id:length(24)}")]
   public async Task<ActionResult<Cat>> Get(string id)

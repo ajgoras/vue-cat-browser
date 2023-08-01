@@ -10,6 +10,7 @@
     "src/*/*.vue",
     "src/*/*.ts",
     "src/functions/*.ts",
+    "src/axiosUrls/*.ts",
     "src/types/*.ts"
   ],
   "exclude": ["src/**/__tests__/*"],

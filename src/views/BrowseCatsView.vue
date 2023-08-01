@@ -3,6 +3,7 @@ import CatComponent from '@/components/CatComponent.vue'
 import type { CatType } from '@/types/CatType'
 import axios from 'axios'
 import { onBeforeMount, ref, watch, type Ref } from 'vue'
+import {axiosUrls} from '../axiosUrls/axiosUrls'
 
 const cats: Ref<CatType[]> = ref([])
 const activeCat: Ref<string> = ref('')
@@ -21,7 +22,7 @@ setTimeout(() => {
 }, 100)
 
 const getCats = async () => {
-  const { data }: { data: CatType[] } = await axios.get('http://localhost:5143/api/cats')
+  const { data }: { data: CatType[] } = await axios.get(axiosUrls.getCatsUrl)
   return data
 }
 

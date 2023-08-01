@@ -21,7 +21,9 @@ builder.Services.AddCors(options =>
                     policy =>
                     {
                       policy.WithOrigins("http://127.0.0.1:5173",
-                      "https://127.0.0.1:5173");
+                      "https://127.0.0.1:5173",
+                      "http://catbrowser.onrender.com",
+                      "https://catbrowser.onrender.com/");
                     });
 });
 

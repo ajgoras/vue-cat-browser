@@ -9,6 +9,7 @@ var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.Configure<CatsDatabaseSettings>(builder.Configuration.GetSection("CatsDatabase"));
 builder.Services.AddSingleton<CatsService>();
 builder.Services.AddControllers();
+builder.Services.AddHostedService<DbInitializerHostedService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

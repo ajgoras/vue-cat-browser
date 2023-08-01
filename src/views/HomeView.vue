@@ -56,6 +56,8 @@ h1 {
   margin-left: 6vmin;
   color: black;
   margin-top: 18vmin;
+  font-weight: bold;
+  line-height: 1.6;
 }
 
 h2 {
@@ -65,6 +67,8 @@ h2 {
   margin-left: 6.5vmin;
   color: black;
   margin-top: 52vmin;
+  font-weight: bold;
+  line-height: 1.6;
 }
 h2:nth-of-type(2) {
   margin-top: 56vmin;

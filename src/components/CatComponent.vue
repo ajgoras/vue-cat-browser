@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import type { CatType } from '@/types/CatType'
+import ScrollReveal from 'scrollreveal'
+import { onMounted } from 'vue'
 
 const props = defineProps<{
   cat: CatType
 }>()
 
-
+onMounted(() => {
+  ScrollReveal().reveal('.cat-element', { delay: 10, duration: 900, viewFactor: 0.3 })
+})
 </script>
 
 <template>

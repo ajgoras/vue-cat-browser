@@ -1,29 +1,43 @@
 <script setup lang="ts">
 import HomeGridComponent from '@/components/HomeGridComponent.vue'
+import ScrollReveal from 'scrollreveal'
+import { onMounted } from 'vue'
+
+onMounted(() => {
+  ScrollReveal().reveal(".left-side", {delay:200 , distance: "90px" , origin: "left"})
+  ScrollReveal().reveal(".cat-home-side-container", {delay:350 , distance: "90px" , origin: "right"})
+})
 </script>
 
 <template>
   <main>
     <header>
-      <HomeGridComponent></HomeGridComponent>
-      <h1>YOUR</h1>
-      <div class="cat-icon-logo-container">
-        <img
-          class="cat-icon-logo"
-          alt="cat-icon-logo"
-          draggable="false"
-          src="@/assets/cat_icon.png"
-        />
-      </div>
-      <h1>CAT BROWSER</h1>
-      <h1>APPLICATION</h1>
-      <div class="cats-paw-logo-container">
-        <img
-          class="cats-paw-logo"
-          alt="cats-paw-logo"
-          draggable="false"
-          src="@/assets/cats-paw.png"
-        />
+      <div class="left-side">
+        <HomeGridComponent></HomeGridComponent>
+        <h1>YOUR</h1>
+        <div class="cat-icon-logo-container">
+          <img
+            class="cat-icon-logo"
+            alt="cat-icon-logo"
+            draggable="false"
+            src="@/assets/cat_icon.png"
+          />
+        </div>
+        <h1>CAT BROWSER</h1>
+        <h1>APPLICATION</h1>
+        <div class="cats-paw-logo-container">
+          <img
+            class="cats-paw-logo"
+            alt="cats-paw-logo"
+            draggable="false"
+            src="@/assets/cats-paw.png"
+          />
+        </div>
+        <h2>Browse beautiful cats, upload new, edit</h2>
+        <h2>or remove existing cats 🐈‍⬛</h2>
+        <div class="browser-cats-container">
+          <RouterLink to="/browse">Start Browsing Cats</RouterLink>
+        </div>
       </div>
       <div class="cat-home-side-container">
         <img
@@ -34,17 +48,13 @@ import HomeGridComponent from '@/components/HomeGridComponent.vue'
         />
         <img class="cat-home-side-heart" alt="heart" draggable="false" src="@/assets/heart.png" />
       </div>
-      <h2>Browse beautiful cats, upload new, edit</h2>
-      <h2>or remove existing cats 🐈‍⬛</h2>
-      <div class="browser-cats-container">
-        <RouterLink to="/browse">Start Browsing Cats</RouterLink>
-      </div>
     </header>
   </main>
 </template>
 
 <style scoped>
-header {
+header,
+.left-side {
   position: relative;
   display: flex;
 }

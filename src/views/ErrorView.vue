@@ -1,5 +1,5 @@
 <template>
-  <div id="main">
+  <div id="ErrorView">
     <h1>Sorry, can't find anything at this address</h1>
     <img src="../assets/sad-cat.png" />
     <div class="home-button-container">
@@ -8,7 +8,7 @@
   </div>
 </template>
 <style scoped>
-#main {
+#ErrorView {
   margin-top: 120px;
   display: flex;
   flex-direction: column;

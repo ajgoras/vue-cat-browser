@@ -7,7 +7,7 @@ const navigateToHome = () => {
 </script>
 
 <template>
-  <div id="main">
+  <div id="Header">
     <header>
       <img
         draggable="false"
@@ -28,7 +28,7 @@ const navigateToHome = () => {
 </template>
 
 <style scoped>
-#main {
+#Header {
   margin: auto;
   width: 60%;
 }
@@ -109,19 +109,19 @@ nav a:hover::after {
 }
 
 @media (max-width: 1024px) {
-  #main {
+  #Header {
     margin: auto;
     width: 70%;
   }
 }
 @media (max-width: 820px) {
-  #main {
+  #Header {
     margin: auto;
     width: 75%;
   }
 }
 @media (max-width: 768px) {
-  #main {
+  #Header {
     margin: auto;
     width: 85%;
   }
@@ -136,7 +136,7 @@ nav a:hover::after {
 }
 
 @media (max-width: 540px) {
-  #main {
+  #Header {
     margin: auto;
     width: 90%;
   }
@@ -157,7 +157,7 @@ nav a:hover::after {
 }
 
 @media (max-width: 440px) {
-  #main {
+  #Header {
     margin: auto;
     width: 95%;
   }

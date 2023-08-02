@@ -4,6 +4,7 @@ import type { CatType } from '@/types/CatType'
 import axios from 'axios'
 import { onBeforeMount, ref, watch, type Ref, onMounted } from 'vue'
 import { axiosUrls } from '../axiosUrls/axiosUrls'
+import ScrollReveal from 'scrollreveal';
 
 const cats: Ref<CatType[]> = ref([])
 const activeCat: Ref<string> = ref('')
@@ -26,6 +27,8 @@ onBeforeMount(async () => {
 })
 
 onMounted(() => {
+  ScrollReveal().reveal('.cats-list', { delay: 400 })
+  ScrollReveal().reveal('.cat-component-container', { delay: 800 })
   setTimeout(() => {
     cats.value.forEach((cat) => {
       observer.observe(document.getElementById(`cat-${cat.id}`)!)
@@ -45,7 +48,7 @@ watch(activeCat, () => {
 </script>
 
 <template>
-  <div id="main">
+  <div id="BrowseCatsView">
     <h1>Cats</h1>
     <div class="cats-container">
       <div class="cats-list">
@@ -64,7 +67,7 @@ watch(activeCat, () => {
 </template>
 
 <style scoped>
-#main {
+#BrowseCatsView {
   margin-top: 50px;
   margin-left: 50px;
   margin-right: 50vmin;

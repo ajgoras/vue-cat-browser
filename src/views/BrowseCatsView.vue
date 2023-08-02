@@ -48,7 +48,7 @@ watch(activeCat, () => {
 </script>
 
 <template>
-  <div id="main">
+  <div id="BrowseCatsView">
     <h1>Cats</h1>
     <div class="cats-container">
       <div class="cats-list">
@@ -67,7 +67,7 @@ watch(activeCat, () => {
 </template>
 
 <style scoped>
-#main {
+#BrowseCatsView {
   margin-top: 50px;
   margin-left: 50px;
   margin-right: 50vmin;

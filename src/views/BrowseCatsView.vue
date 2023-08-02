@@ -8,7 +8,7 @@ import { axiosUrls } from '../axiosUrls/axiosUrls'
 const cats: Ref<CatType[]> = ref([])
 const activeCat: Ref<string> = ref('')
 
-var observer = new IntersectionObserver(onIntersection, {
+const observer = new IntersectionObserver(onIntersection, {
   root: null,
   threshold: 0.8
 })

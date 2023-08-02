@@ -2,24 +2,19 @@
 import CatComponent from '@/components/CatComponent.vue'
 import type { CatType } from '@/types/CatType'
 import axios from 'axios'
-import { onBeforeMount, ref, watch, type Ref } from 'vue'
-import {axiosUrls} from '../axiosUrls/axiosUrls'
+import { onBeforeMount, ref, watch, type Ref, onMounted } from 'vue'
+import { axiosUrls } from '../axiosUrls/axiosUrls'
 
 const cats: Ref<CatType[]> = ref([])
 const activeCat: Ref<string> = ref('')
 
-var observer = new IntersectionObserver(onIntersection, {
+const observer = new IntersectionObserver(onIntersection, {
   root: null,
   threshold: 0.8
 })
 function onIntersection(entries: any) {
   entries.forEach((entry: any) => (activeCat.value = entry.target.id.substring(4)))
 }
-setTimeout(() => {
-  cats.value.forEach((cat) => {
-    observer.observe(document.getElementById(`cat-${cat.id}`)!)
-  })
-}, 100)
 
 const getCats = async () => {
   const { data }: { data: CatType[] } = await axios.get(axiosUrls.getCatsUrl)
@@ -28,9 +23,17 @@ const getCats = async () => {
 
 onBeforeMount(async () => {
   cats.value = await getCats()
+})
+
+onMounted(() => {
   setTimeout(() => {
-    activeCat.value = cats.value[0].id
-  }, 70)
+    cats.value.forEach((cat) => {
+      observer.observe(document.getElementById(`cat-${cat.id}`)!)
+    })
+    setTimeout(() => {
+      activeCat.value = cats.value[0].id
+    }, 50)
+  }, 350)
 })
 
 watch(activeCat, () => {

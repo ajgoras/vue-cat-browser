@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import CreditMaterial from '@/components/CreditMaterial.vue'
+import { onMounted } from 'vue'
+import ScrollReveal from 'scrollreveal'
 const materials = [
   {
     imageLink:
@@ -37,6 +39,12 @@ const materials = [
     anchorValue: 'Cat icons created by AomAm - Flaticon'
   }
 ]
+
+onMounted(() => {
+  ScrollReveal().reveal('.about', { delay: 100 })
+  ScrollReveal().reveal('.materials', { delay: 350 })
+  ScrollReveal().reveal('.material-element', { delay: 300, interval: 120 })
+})
 </script>
 
 <template>
@@ -44,7 +52,7 @@ const materials = [
     <h1>Credits and information about the materials used on the site</h1>
   </div>
   <div class="materials">
-    <div v-for="material of materials">
+    <div class="material-element" v-for="material of materials">
       <CreditMaterial :material="material" />
     </div>
   </div>

@@ -16,8 +16,9 @@ defineProps<{
 
 <style scoped>
 .material {
+  border-bottom: 1px solid rgba(211, 211, 211, 0.432);
+  border-top: 1px solid rgba(211, 211, 211, 0.432);
   border-radius: 20px;
-  outline: 1px solid lightgrey;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -25,7 +26,7 @@ defineProps<{
   font-size: 17px;
   font-style: italic;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin: -1px -1px 30px -1px;
   transition: all 0.3s ease-in-out;
 }
 .material:hover {
@@ -33,6 +34,7 @@ defineProps<{
 }
 
 .material img {
+  margin: -1px;
   user-select: none;
   border-radius: 20px;
   box-sizing: content-box;

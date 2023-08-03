@@ -4,8 +4,9 @@ import ScrollReveal from 'scrollreveal'
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  ScrollReveal().reveal(".left-side", {delay:200 , distance: "90px" , origin: "left"})
-  ScrollReveal().reveal(".cat-home-side-container", {delay:350 , distance: "90px" , origin: "right"})
+  ScrollReveal().reveal(".left-side", {delay:200 , distance: "50px" , origin: "left"})
+  ScrollReveal().reveal(".cat-home-side-container", {delay:310 , distance: "30px" , origin: "right"})
+  ScrollReveal().reveal(".cat-home-side-heart", {delay:510 , distance: "40px" , origin: "right"})
 })
 </script>
 
@@ -156,6 +157,7 @@ h1:nth-of-type(3) {
   height: auto;
   border-radius: 1000px;
   box-shadow: 6px 8px 8px rgba(0, 0, 0, 0.158);
+  opacity: 0.85;
 }
 
 .browser-cats-container {

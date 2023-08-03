@@ -1,9 +1,13 @@
 <script setup lang="ts">
 import router from '@/router'
-
+import ScrollReveal from 'scrollreveal';
+import { onMounted } from 'vue';
 const navigateToHome = () => {
   router.push('/')
 }
+onMounted(() => {
+  ScrollReveal().reveal("#Header", {delay:50 , distance: "120px" , origin: "top"})
+})
 </script>
 
 <template>

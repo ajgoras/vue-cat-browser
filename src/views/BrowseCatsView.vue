@@ -27,7 +27,7 @@ onBeforeMount(async () => {
 })
 
 onMounted(() => {
-  ScrollReveal().reveal('.cats-list', { delay: 400 })
+  ScrollReveal().reveal('.cats-list', { delay: 450 })
   ScrollReveal().reveal('.cat-component-container', { delay: 800 })
   setTimeout(() => {
     cats.value.forEach((cat) => {
@@ -35,7 +35,7 @@ onMounted(() => {
     })
     setTimeout(() => {
       activeCat.value = cats.value[0].id
-    }, 50)
+    }, 120)
   }, 350)
 })
 

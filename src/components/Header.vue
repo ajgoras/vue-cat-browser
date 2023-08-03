@@ -138,20 +138,20 @@ nav a:hover::after {
 @media (max-width: 540px) {
   #Header {
     margin: auto;
-    width: 90%;
+    width: 93%;
   }
-  header {
-    zoom: 0.8;
-  }
+
   nav {
     gap: 3vw;
+    font-size: 14px;
   }
   .browser-cats-container {
     margin-right: 10px;
+    font-size: 14px;
   }
   .logo {
     border-radius: 50px;
-    width: 220px;
+    width: 200px;
     height: auto;
   }
 }
@@ -161,18 +161,17 @@ nav a:hover::after {
     margin: auto;
     width: 97%;
   }
-  header {
-    zoom: 0.7;
-  }
   nav {
+    font-size: 13px;
     gap: 3vw;
   }
   .browser-cats-container {
     margin-right: 5px;
+    font-size: 13px;
   }
   .logo {
     border-radius: 50px;
-    width: 200px;
+    width: 180px;
     height: auto;
   }
 }

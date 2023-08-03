@@ -147,7 +147,7 @@ nav a:hover::after {
     gap: 3vw;
   }
   .browser-cats-container {
-    margin-right: 15px;
+    margin-right: 10px;
   }
   .logo {
     border-radius: 50px;
@@ -159,16 +159,16 @@ nav a:hover::after {
 @media (max-width: 440px) {
   #Header {
     margin: auto;
-    width: 95%;
+    width: 97%;
   }
   header {
-    zoom: 0.75;
+    zoom: 0.7;
   }
   nav {
-    gap: 2vw;
+    gap: 3vw;
   }
   .browser-cats-container {
-    margin-right: 10px;
+    margin-right: 5px;
   }
   .logo {
     border-radius: 50px;

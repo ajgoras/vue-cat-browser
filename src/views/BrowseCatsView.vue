@@ -103,6 +103,8 @@ watch(isCatsLoadingLongerThan5sec, () => {
   margin-top: 50px;
   margin-left: 50px;
   margin-right: 50vmin;
+  display: grid;
+  grid-template-columns: 2fr 5fr;
 }
 
 .cats-list {
@@ -112,9 +114,8 @@ watch(isCatsLoadingLongerThan5sec, () => {
 }
 
 .cat-component-container {
-  width: 60%;
-  margin: auto;
-  margin-right: -10vmin;
+  float: right;
+  margin-right: 5.8vmin;
 }
 
 .cat-component-container-loading {

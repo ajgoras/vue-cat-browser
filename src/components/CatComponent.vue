@@ -14,16 +14,16 @@ onMounted(() => {
 
 <template>
   <div class="cat-element">
-    <h2>CAT</h2>
     <img :id="cat.id" class="cat-photo" alt="cat-photo" draggable="false" :src="cat.image" />
   </div>
 </template>
 
 <style scoped>
 .cat-element {
-  height: 90vmin;
-  width: 90vmin;
+  height: 58vmax;
+  width: 58vmax;
 }
+
 .cat-photo {
   height: 100%;
   width: 100%;

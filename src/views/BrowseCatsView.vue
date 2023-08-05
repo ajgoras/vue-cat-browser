@@ -11,10 +11,6 @@ const activeCat: Ref<string> = ref('')
 const isCatsLoading: Ref<boolean> = ref(true)
 const isCatsLoadingLongerThan5sec: Ref<boolean> = ref(false)
 
-const observer = new IntersectionObserver(onIntersection, {
-  root: null,
-  threshold: 0.8
-})
 function onIntersection(entries: any) {
   entries.forEach((entry: any) => (activeCat.value = entry.target.id.substring(4)))
 }
@@ -30,6 +26,14 @@ const getCats = async () => {
     })
     .finally(() => {
       isCatsLoading.value = false
+      let thresholdValue = 0.8
+      if (window.innerWidth < 1100) {
+        thresholdValue = 1
+      }
+      const observer = new IntersectionObserver(onIntersection, {
+        root: null,
+        threshold: thresholdValue
+      })
       setTimeout(() => {
         cats.value.forEach((cat) => {
           observer.observe(document.getElementById(`cat-${cat.id}`)!)
@@ -50,6 +54,7 @@ onMounted(() => {
   ScrollReveal().reveal('.cats-list', { delay: 550 })
   ScrollReveal().reveal('.cat-component-container-parent', { delay: 950 })
   ScrollReveal().reveal('.cat-component-container-loading', { delay: 400 })
+  console.log(window.innerWidth)
 })
 
 watch(activeCat, () => {
@@ -134,5 +139,40 @@ watch(isCatsLoadingLongerThan5sec, () => {
 
 .cat-name {
   font-size: 6vmin;
+}
+
+@media (max-width: 1100px) {
+  #BrowseCatsView {
+    width: 100%;
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50vmin;
+    display: flex;
+  }
+  .cat-component-container {
+    position: relative;
+    top: 0vmin;
+    margin-bottom: 30vmin;
+  }
+  .cats-list {
+    background-color: var(--vt-c-white);
+    z-index: 2;
+    position: fixed;
+    top: 80vh;
+    left: 0;
+    height: 20vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .cat-name {
+    font-size: 7vmin;
+  }
+  @media (prefers-color-scheme: dark) {
+    .cats-list {
+      background-color: var(--vt-c-black);
+    }
+  }
 }
 </style>

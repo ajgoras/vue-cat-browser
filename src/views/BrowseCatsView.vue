@@ -39,7 +39,6 @@ const getCats = async () => {
         }, 120)
       }, 350)
     })
-  //const { data }: { data: CatType[] } = await axios.get(axiosUrls.getCatsUrl)
   return data
 }
 
@@ -51,14 +50,6 @@ onMounted(() => {
   ScrollReveal().reveal('.cats-list', { delay: 550 })
   ScrollReveal().reveal('.cat-component-container-parent', { delay: 950 })
   ScrollReveal().reveal('.cat-component-container-loading', { delay: 400 })
-  // setTimeout(() => {
-  //   cats.value.forEach((cat) => {
-  //     observer.observe(document.getElementById(`cat-${cat.id}`)!)
-  //   })
-  //   setTimeout(() => {
-  //     activeCat.value = cats.value[0].id
-  //   }, 120)
-  // }, 350)
 })
 
 watch(activeCat, () => {

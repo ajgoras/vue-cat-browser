@@ -7,12 +7,18 @@ import { axiosUrls } from '../axiosUrls/axiosUrls'
 import ScrollReveal from 'scrollreveal'
 
 const cats: Ref<CatType[]> = ref([])
-const activeCat: Ref<string> = ref('')
+const activeCat: Ref<CatType> = ref({ id: '', name: '', color: '', age: 0, image: '' })
 const isCatsLoading: Ref<boolean> = ref(true)
 const isCatsLoadingLongerThan5sec: Ref<boolean> = ref(false)
 
 function onIntersection(entries: any) {
-  entries.forEach((entry: any) => (activeCat.value = entry.target.id.substring(4)))
+  entries.forEach((entry: any) => {
+    const catId = entry.target.id.substring(4)
+    const catToPaste = cats.value.find((cat) => cat.id == catId)
+    if (catToPaste) {
+      activeCat.value = catToPaste
+    }
+  })
 }
 
 const getCats = async () => {
@@ -39,7 +45,7 @@ const getCats = async () => {
           observer.observe(document.getElementById(`cat-${cat.id}`)!)
         })
         setTimeout(() => {
-          activeCat.value = cats.value[0].id
+          activeCat.value = cats.value[0]
         }, 120)
       }, 350)
     })
@@ -54,13 +60,12 @@ onMounted(() => {
   ScrollReveal().reveal('.cats-list', { delay: 550 })
   ScrollReveal().reveal('.cat-component-container-parent', { delay: 950 })
   ScrollReveal().reveal('.cat-component-container-loading', { delay: 400 })
-  console.log(window.innerWidth)
 })
 
 watch(activeCat, () => {
-  const catName = cats.value.find(({ id }) => id === activeCat.value)
+  const catName = cats.value.find((cat) => cat === activeCat.value)
   if (catName) {
-    activeCat.value = catName?.name
+    activeCat.value = catName
   }
 })
 
@@ -76,7 +81,7 @@ watch(isCatsLoadingLongerThan5sec, () => {
     <h1>Cats</h1>
     <div class="cats-container">
       <div class="cats-list">
-        <p class="cat-name">{{ activeCat }}</p>
+        <p class="cat-name">{{ activeCat.name }}</p>
       </div>
       <div v-if="isCatsLoading" class="cat-component-container-loading">
         <div class="spinner-border text-success" role="status">

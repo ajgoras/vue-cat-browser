@@ -32,7 +32,10 @@ const getCats = async () => {
     })
     .finally(() => {
       isCatsLoading.value = false
-      let thresholdValue = 0.8
+      let thresholdValue = 0.69
+      if (window.innerWidth < 1350) {
+        thresholdValue = 0.8
+      }
       if (window.innerWidth < 1100) {
         thresholdValue = 1
       }
@@ -81,7 +84,7 @@ watch(isCatsLoadingLongerThan5sec, () => {
     <h1>Cats</h1>
     <div class="cats-container">
       <div class="cats-list">
-        <p class="cat-name">{{ activeCat.name }}</p>
+        <p class="cat-name">Cat's Name: {{ activeCat.name }}</p>
       </div>
       <div v-if="isCatsLoading" class="cat-component-container-loading">
         <div class="spinner-border text-success" role="status">
@@ -111,8 +114,7 @@ watch(isCatsLoadingLongerThan5sec, () => {
 #BrowseCatsView {
   width: 100%;
   margin-top: 50px;
-  margin-left: 50px;
-  margin-right: 50vmin;
+  padding-left: 50px;
   display: grid;
   grid-template-columns: 2fr 5fr;
 }
@@ -120,12 +122,12 @@ watch(isCatsLoadingLongerThan5sec, () => {
 .cats-list {
   position: fixed;
   top: 45vmin;
-  left: 10vmin;
+  left: 3vmax;
 }
 
 .cat-component-container {
   float: right;
-  margin-right: 5.8vmin;
+  margin-right: 0.5vmin;
 }
 
 .cat-component-container-loading {
@@ -143,7 +145,7 @@ watch(isCatsLoadingLongerThan5sec, () => {
 }
 
 .cat-name {
-  font-size: 6vmin;
+  font-size: 4vmax;
 }
 
 @media (max-width: 1100px) {

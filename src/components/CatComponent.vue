@@ -25,8 +25,24 @@ onMounted(() => {
 }
 
 .cat-photo {
-  height: 100%;
-  width: 100%;
+  position: relative;
+  top: 14vmin;
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
+  border-radius: 7px;
+  outline: transparent 3px solid;
+  transition: outline ease-in-out .15s;
+}
+.cat-photo:hover{
+  outline: var(--green-main-color) 3px solid;
+}
+
+@media(prefers-color-scheme:dark){
+  .cat-photo:hover{
+  outline: var(--green-main-color-darker) 3px solid;
+}
 }
 </style>

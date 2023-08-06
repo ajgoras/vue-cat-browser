@@ -7,12 +7,18 @@ import { axiosUrls } from '../axiosUrls/axiosUrls'
 import ScrollReveal from 'scrollreveal'
 
 const cats: Ref<CatType[]> = ref([])
-const activeCat: Ref<string> = ref('')
+const activeCat: Ref<CatType> = ref({ id: '', name: '', color: '', age: 0, image: '' })
 const isCatsLoading: Ref<boolean> = ref(true)
 const isCatsLoadingLongerThan5sec: Ref<boolean> = ref(false)
 
 function onIntersection(entries: any) {
-  entries.forEach((entry: any) => (activeCat.value = entry.target.id.substring(4)))
+  entries.forEach((entry: any) => {
+    const catId = entry.target.id.substring(4)
+    const catToPaste = cats.value.find((cat) => cat.id == catId)
+    if (catToPaste) {
+      activeCat.value = catToPaste
+    }
+  })
 }
 
 const getCats = async () => {
@@ -26,7 +32,10 @@ const getCats = async () => {
     })
     .finally(() => {
       isCatsLoading.value = false
-      let thresholdValue = 0.8
+      let thresholdValue = 0.69
+      if (window.innerWidth < 1350) {
+        thresholdValue = 0.8
+      }
       if (window.innerWidth < 1100) {
         thresholdValue = 1
       }
@@ -39,7 +48,7 @@ const getCats = async () => {
           observer.observe(document.getElementById(`cat-${cat.id}`)!)
         })
         setTimeout(() => {
-          activeCat.value = cats.value[0].id
+          activeCat.value = cats.value[0]
         }, 120)
       }, 350)
     })
@@ -54,13 +63,12 @@ onMounted(() => {
   ScrollReveal().reveal('.cats-list', { delay: 550 })
   ScrollReveal().reveal('.cat-component-container-parent', { delay: 950 })
   ScrollReveal().reveal('.cat-component-container-loading', { delay: 400 })
-  console.log(window.innerWidth)
 })
 
 watch(activeCat, () => {
-  const catName = cats.value.find(({ id }) => id === activeCat.value)
+  const catName = cats.value.find((cat) => cat === activeCat.value)
   if (catName) {
-    activeCat.value = catName?.name
+    activeCat.value = catName
   }
 })
 
@@ -76,7 +84,7 @@ watch(isCatsLoadingLongerThan5sec, () => {
     <h1>Cats</h1>
     <div class="cats-container">
       <div class="cats-list">
-        <p class="cat-name">{{ activeCat }}</p>
+        <p class="cat-name">Cat's Name: {{ activeCat.name }}</p>
       </div>
       <div v-if="isCatsLoading" class="cat-component-container-loading">
         <div class="spinner-border text-success" role="status">
@@ -106,8 +114,7 @@ watch(isCatsLoadingLongerThan5sec, () => {
 #BrowseCatsView {
   width: 100%;
   margin-top: 50px;
-  margin-left: 50px;
-  margin-right: 50vmin;
+  padding-left: 50px;
   display: grid;
   grid-template-columns: 2fr 5fr;
 }
@@ -115,12 +122,12 @@ watch(isCatsLoadingLongerThan5sec, () => {
 .cats-list {
   position: fixed;
   top: 45vmin;
-  left: 10vmin;
+  left: 3vmax;
 }
 
 .cat-component-container {
   float: right;
-  margin-right: 5.8vmin;
+  margin-right: 0.5vmin;
 }
 
 .cat-component-container-loading {
@@ -138,7 +145,7 @@ watch(isCatsLoadingLongerThan5sec, () => {
 }
 
 .cat-name {
-  font-size: 6vmin;
+  font-size: 4vmax;
 }
 
 @media (max-width: 1100px) {

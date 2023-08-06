@@ -262,6 +262,7 @@ h1:nth-of-type(3) {
   }
   .browser-cats-container a {
     background-color: var(--green-main-color-darker);
+    border: 2px var(--green-main-color-darkest) solid;
   }
   .browser-cats-container a:hover {
     background-color: var(--vt-c-black-soft);

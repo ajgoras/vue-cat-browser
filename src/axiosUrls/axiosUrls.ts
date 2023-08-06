@@ -11,5 +11,6 @@ if (
 }
 
 export const axiosUrls = {
-  getCatsUrl: `${serverUrl}/cats`
+  getCatsUrl: `${serverUrl}/cats`,
+  getCatUrl: `${serverUrl}/cats/`
 }

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import router from '@/router'
 import type { CatType } from '@/types/CatType'
 import ScrollReveal from 'scrollreveal'
 import { onMounted } from 'vue'
@@ -10,11 +11,24 @@ const props = defineProps<{
 onMounted(() => {
   ScrollReveal().reveal('.cat-element', { delay: 10, duration: 900, viewFactor: 0.3 })
 })
+
+const openCatDetails = (id: string) => {
+  router.push(`/cat/${id}`)
+}
 </script>
 
 <template>
-  <div class="cat-element">
-    <img :id="cat.id" class="cat-photo" alt="cat-photo" draggable="false" :src="cat.image" />
+  <div>
+    <div class="cat-element">
+      <img
+        @click="openCatDetails(cat.id)"
+        :id="cat.id"
+        class="cat-photo"
+        alt="cat-photo"
+        draggable="false"
+        :src="cat.image"
+      />
+    </div>
   </div>
 </template>
 
@@ -40,6 +54,7 @@ onMounted(() => {
   outline: var(--green-main-color) 3px solid;
   cursor: pointer;
 }
+
 @media (max-width: 1100px) {
   .cat-element {
     height: 75vmax;

@@ -24,10 +24,11 @@ const router = createRouter({
       component: () => import('../views/BrowseCatsView.vue')
     },
     {
-      path: "/:catchAll(.*)",
-      name: "error",
-      component: ErrorView,
-    }
+      path: '/:catchAll(.*)',
+      name: 'error',
+      component: ErrorView
+    },
+    { path: '/cat/:id', component: () => import('../components/CatDetailsComponent.vue') }
   ]
 })
 

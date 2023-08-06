@@ -3,8 +3,8 @@ import { axiosUrls } from '@/axiosUrls/axiosUrls'
 import router from '@/router'
 import type { CatType } from '@/types/CatType'
 import axios from 'axios'
-import { onBeforeMount, ref, type Ref } from 'vue'
-
+import { onBeforeMount, onMounted, ref, type Ref } from 'vue'
+import ScrollReveal from 'scrollreveal'
 const cat: Ref<CatType> = ref({ id: '', name: '', color: '', age: 0, image: '' })
 
 const getCat = async () => {
@@ -19,18 +19,27 @@ const getCat = async () => {
 onBeforeMount(async () => {
   cat.value = await getCat()
 })
+
+onMounted(() => {
+  setTimeout(() => {
+    ScrollReveal().reveal('.return-to-cats-container', { delay: 1500 })
+    ScrollReveal().reveal('.cat-element', { delay: 250 })
+    ScrollReveal().reveal('.cat-photo', { delay: 650 })
+    ScrollReveal().reveal('.cat-description', { delay: 1000, interval: 120 })
+  }, 0)
+})
 </script>
 
 <template>
   <div id="CatDetailsComponent">
-    <div class="browser-cats-container">
+    <div class="return-to-cats-container">
       <RouterLink to="/browse">&lt Return to cats</RouterLink>
     </div>
     <div class="cat-element">
       <img :id="cat.id" class="cat-photo" alt="cat-photo" draggable="false" :src="cat.image" />
-      <h2>Hello, my name is {{ cat.name }}</h2>
-      <h3>I am {{ cat.age }} years old</h3>
-      <h4>My fur is {{ cat.color }}</h4>
+      <h2 class="cat-description">Hello, my name is {{ cat.name }}</h2>
+      <h3 class="cat-description">I am {{ cat.age }} years old</h3>
+      <h4 class="cat-description">My fur is {{ cat.color }}</h4>
     </div>
   </div>
 </template>
@@ -69,12 +78,12 @@ onBeforeMount(async () => {
   border-radius: 7px;
 }
 
-.browser-cats-container {
+.return-to-cats-container {
   font-size: 2.2vmin;
   font-weight: bold;
   user-select: none;
 }
-.browser-cats-container a {
+.return-to-cats-container a {
   padding: 1vmin 1.5vmin 1vmin 1.5vmin;
   border: 2px var(--green-main-color-darker) solid;
   border-radius: 50px;
@@ -82,17 +91,17 @@ onBeforeMount(async () => {
   color: whitesmoke;
 }
 
-.browser-cats-container a:hover {
+.return-to-cats-container a:hover {
   background-color: whitesmoke;
   color: var(--green-main-color);
 }
 
 @media (max-width: 600px) {
-  .browser-cats-container {
+  .return-to-cats-container {
     font-size: 3vmin;
   }
 
-  .browser-cats-container a {
+  .return-to-cats-container a {
     padding: 1.5vmin 2vmin 1.5vmin 2vmin;
   }
 
@@ -118,11 +127,11 @@ onBeforeMount(async () => {
   .cat-element:hover {
     outline: 2px solid rgba(255, 255, 255, 0.296);
   }
-  .browser-cats-container a {
+  .return-to-cats-container a {
     background-color: var(--green-main-color-darker);
     border: 2px var(--green-main-color-darkest) solid;
   }
-  .browser-cats-container a:hover {
+  .return-to-cats-container a:hover {
     background-color: var(--vt-c-black-soft);
     color: var(--green-main-color-lighter);
   }

@@ -84,7 +84,7 @@ watch(isCatsLoadingLongerThan5sec, () => {
     <h1>Cats</h1>
     <div class="cats-container">
       <div class="cats-list">
-        <p class="cat-name">Cat's Name: {{ activeCat.name }}</p>
+        <p class="cat-name">Cat Name: {{ activeCat.name }}</p>
       </div>
       <div v-if="isCatsLoading" class="cat-component-container-loading">
         <div class="spinner-border text-success" role="status">
@@ -149,17 +149,26 @@ watch(isCatsLoadingLongerThan5sec, () => {
 }
 
 @media (max-width: 1100px) {
+  h1 {
+    height: fit-content;
+  }
   #BrowseCatsView {
     width: 100%;
     margin-top: 50px;
-    margin-left: 50px;
-    margin-right: 50vmin;
+    padding-left: 50px;
     display: flex;
+    justify-content: center;
+  }
+  .cats-container {
+    width: 65vmin;
+    margin: auto;
   }
   .cat-component-container {
-    position: relative;
-    top: 0vmin;
     margin-bottom: 30vmin;
+  }
+
+  .cat-component-container {
+    margin-right: -5vmin;
   }
   .cats-list {
     background-color: var(--vt-c-white);
@@ -176,10 +185,71 @@ watch(isCatsLoadingLongerThan5sec, () => {
   .cat-name {
     font-size: 7vmin;
   }
+
   @media (prefers-color-scheme: dark) {
     .cats-list {
       background-color: var(--vt-c-black);
     }
   }
 }
+
+@media (max-width: 770px) {
+  .cat-component-container {
+    margin-right: -4vmin;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cats-list {
+      background-color: var(--vt-c-black);
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  .cat-component-container {
+    margin-top: 15vmin;
+    margin-right: -2.5vmin;
+  }
+  .cats-list{
+    top: 75vh;
+    height: 25vh;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cats-list {
+      background-color: var(--vt-c-black);
+    }
+  }
+}
+
+@media (max-width: 440px) {
+  .cat-component-container {
+    margin-top: 20vmin;
+    margin-right: 1vmin;
+  }
+  .cats-list{
+    top: 70vh;
+    height: 30vh;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cats-list {
+      background-color: var(--vt-c-black);
+    }
+  }
+}
+
+@media (max-width: 395px) {
+  .cat-component-container {
+    margin-top: 25vmin;
+    margin-right: 2vmin;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .cats-list {
+      background-color: var(--vt-c-black);
+    }
+  }
+}
+
 </style>

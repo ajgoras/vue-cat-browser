@@ -84,7 +84,7 @@ watch(isCatsLoadingLongerThan5sec, () => {
     <h1>Cats</h1>
     <div class="cats-container">
       <div class="cats-list">
-        <p class="cat-name">Cat Name: {{ activeCat.name }}</p>
+        <p v-if="!isCatsLoading" class="cat-name">Cat Name: {{ activeCat.name }}</p>
       </div>
       <div v-if="isCatsLoading" class="cat-component-container-loading">
         <div class="spinner-border text-success" role="status">
@@ -210,7 +210,7 @@ watch(isCatsLoadingLongerThan5sec, () => {
     margin-top: 15vmin;
     margin-right: -2.5vmin;
   }
-  .cats-list{
+  .cats-list {
     top: 75vh;
     height: 25vh;
   }
@@ -227,7 +227,7 @@ watch(isCatsLoadingLongerThan5sec, () => {
     margin-top: 20vmin;
     margin-right: 1vmin;
   }
-  .cats-list{
+  .cats-list {
     top: 70vh;
     height: 30vh;
   }
@@ -251,5 +251,4 @@ watch(isCatsLoadingLongerThan5sec, () => {
     }
   }
 }
-
 </style>

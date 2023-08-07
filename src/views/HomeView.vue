@@ -1,12 +1,19 @@
 <script setup lang="ts">
+import { axiosUrls } from '@/axiosUrls/axiosUrls'
 import HomeGridComponent from '@/components/HomeGridComponent.vue'
+import axios from 'axios'
 import ScrollReveal from 'scrollreveal'
 import { onMounted } from 'vue'
 
 onMounted(() => {
-  ScrollReveal().reveal(".left-side", {delay:200 , distance: "50px" , origin: "left"})
-  ScrollReveal().reveal(".cat-home-side-container", {delay:310 , distance: "30px" , origin: "right"})
-  ScrollReveal().reveal(".cat-home-side-heart", {delay:510 , distance: "40px" , origin: "right"})
+  ScrollReveal().reveal('.left-side', { delay: 200, distance: '50px', origin: 'left' })
+  ScrollReveal().reveal('.cat-home-side-container', {
+    delay: 310,
+    distance: '30px',
+    origin: 'right'
+  })
+  ScrollReveal().reveal('.cat-home-side-heart', { delay: 510, distance: '40px', origin: 'right' })
+  axios.get(axiosUrls.getCatsUrl)
 })
 </script>
 

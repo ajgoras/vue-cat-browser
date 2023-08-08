@@ -23,7 +23,8 @@ onBeforeMount(async () => {
 onMounted(() => {
   setTimeout(() => {
     ScrollReveal().reveal('.return-to-cats-container', { delay: 1500 })
-    ScrollReveal().reveal('.cat-element', { delay: 250 })
+    ScrollReveal().reveal('#CatDetailsComponent', { delay: 250 })
+    ScrollReveal().reveal('.cat-element', { delay: 350 })
     ScrollReveal().reveal('.cat-photo', { delay: 650 })
     ScrollReveal().reveal('.cat-description', { delay: 1000, interval: 120 })
   }, 0)

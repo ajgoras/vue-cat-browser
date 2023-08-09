@@ -10,6 +10,7 @@ const cats: Ref<CatType[]> = ref([])
 const activeCat: Ref<CatType> = ref({ id: '', name: '', color: '', age: 0, image: '' })
 const isCatsLoading: Ref<boolean> = ref(true)
 const isCatsLoadingLongerThan5sec: Ref<boolean> = ref(false)
+const isBackendError: Ref<boolean> = ref(false)
 
 function onIntersection(entries: any) {
   entries.forEach((entry: any) => {
@@ -52,6 +53,9 @@ const getCats = async () => {
         }, 120)
       }, 350)
     })
+    .catch(() => {
+      isBackendError.value = true
+    })
   return data
 }
 
@@ -81,8 +85,15 @@ watch(isCatsLoadingLongerThan5sec, () => {
 
 <template>
   <div id="BrowseCatsView">
-    <h1>Cats</h1>
-    <div class="cats-container">
+    <h1 v-if="!isBackendError">Cats</h1>
+    <div v-if="isBackendError">
+      <div class="backend-error">
+        <h1>Backend server error..</h1>
+        <img src="../assets/sad-cat.png" />
+        <h2>Try to refresh the page</h2>
+      </div>
+    </div>
+    <div v-if="!isBackendError" class="cats-container">
       <div class="cats-list">
         <p v-if="!isCatsLoading" class="cat-name">Cat Name: {{ activeCat.name }}</p>
       </div>
@@ -148,6 +159,28 @@ watch(isCatsLoadingLongerThan5sec, () => {
   font-size: 4vmax;
 }
 
+.backend-error {
+  position: absolute;
+  width: 85%;
+  margin: auto;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6vmin;
+}
+
+.backend-error img {
+  height: 10vmax;
+  width: 10vmax;
+}
+.backend-error h1 {
+  font-size: 5vmin;
+}
+.backend-error h2 {
+  font-size: 4vmin;
+}
+
 @media (max-width: 1100px) {
   h1 {
     height: fit-content;
@@ -190,6 +223,9 @@ watch(isCatsLoadingLongerThan5sec, () => {
     .cats-list {
       background-color: var(--vt-c-black);
     }
+  }
+  .backend-error {
+    position: static;
   }
 }
 

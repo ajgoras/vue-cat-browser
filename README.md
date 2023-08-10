@@ -1,52 +1,42 @@
-# vue-cat-browser
+# Vue cat browser
 
-This template should help get you started developing with Vue 3 in Vite.
+---
 
-## Recommended IDE Setup
+_Cat browser app created in Vue.js, ASP .NET Core and MongoDB._
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+### Features
 
-## Type Support for `.vue` Imports in TS
+- Information/Landing page (in progress) ⭐️
+- Displaying cats offers from database 🐈
+- Credits page with used materials ℹ️
+- Showing more information about selected cat 🐈‍⬛
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+### Live Link:
+[Cat browser live link](https://catbrowser.netlify.app/)
+_You have to wait for the backend server to start up, because it runs on free hosting and shuts down after not being used for a while._
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+### Future Plans:
+- Finish main page
+- Add Creating new cat feature
+- Add removing existing cat feature
+- Add editing existing cat feature
+- Probably something more 😊
 
-## Customize configuration
+### Tech and dependencies:
+![Mongo](https://img.shields.io/badge/-mongoDB-darkolivegreen?style=for-the-badge&logo=mongodb) ![ASP.NET Core](https://img.shields.io/badge/-ASP.NET_Core-navy?style=for-the-badge&logo=.net) ![Vue.js](https://img.shields.io/badge/-Vue.js-darkslategrey?style=for-the-badge&logo=vue.js) 
+![typescript](https://img.shields.io/badge/-typescript-yellow?style=for-the-badge&logo=typescript) ![html](https://img.shields.io/badge/-html-green?style=for-the-badge&logo=html5) ![css](https://img.shields.io/badge/-css-blue?style=for-the-badge&logo=css3) ![Bootstrap](https://img.shields.io/badge/-bootstrap-darkslateblue?style=for-the-badge&logo=bootstrap)\
+![Axios](https://img.shields.io/badge/-Axios-purple?style=for-the-badge&logo=axios) ![scrollreveal](https://img.shields.io/badge/-ScrollReveal-black?style=for-the-badge&logo=scrollreveal)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-## Project Setup
+### Installation
+_If you want to run app locally_
+- Clone or download repository
+- Install necessary dependencies ```npm install``` 
+- Go to backend directory ```cd api/```
+- Install necessary dependencies ```dotnet build``` 
+- Run backend server  ``` dotnet run ```
+- Go back to main directory and run vue app ```npm run dev```
+- Open http://localhost:5173/
+- Enjoy! 🎉
 
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```

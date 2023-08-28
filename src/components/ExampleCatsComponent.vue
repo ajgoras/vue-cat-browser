@@ -15,7 +15,13 @@ const cats: Ref<CatType[]> = exampleCats()
       <RouterLink to="/browse">Let’s take a look at all cats </RouterLink>
     </div>
     <div class="vueper-slides-containter">
-      <vueper-slides :slide-ratio="1 / 1.8" duration="3000" autoplay style="border-radius: 15px">
+      <vueper-slides
+        :touchable="false"
+        :slide-ratio="1 / 1.8"
+        duration="3000"
+        autoplay
+        style="border-radius: 15px"
+      >
         <vueper-slide
           style="border-radius: 15px"
           v-for="cat in cats"

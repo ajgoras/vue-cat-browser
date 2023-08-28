@@ -40,6 +40,7 @@ const cats: Ref<CatType[]> = ref([
     image: 'https://cdn.pixabay.com/photo/2018/01/03/19/17/cat-3059075_1280.jpg'
   }
 ])
+//TODO: crate mobile view: grid template rows itd..
 </script>
 
 <template>
@@ -63,6 +64,9 @@ const cats: Ref<CatType[]> = ref([
         </template>
       </vueper-slides>
     </div>
+    <div class="footer">
+      <RouterLink to="/browse">Let’s take a look at all cats </RouterLink>
+    </div>
   </div>
 </template>
 
@@ -70,12 +74,13 @@ const cats: Ref<CatType[]> = ref([
 #ExampleCatsComponent {
   display: grid;
   grid-template-columns: 1.8fr 3fr;
-  background-color: #5bd772ac;
+  background-color: #5bd77298;
   margin-top: 110px;
   padding: 12vmax 4vmin 12vmax 1vmin;
 }
 
-.header{
+.header,
+.footer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,31 +89,33 @@ const cats: Ref<CatType[]> = ref([
 }
 
 h1 {
-
   color: black;
   font-family: 'Montserrat';
   font-weight: bold;
   font-size: 3.3vmax;
 }
 
-h2{
+h2 {
   color: black;
   font-family: 'Montserrat';
   font-weight: bold;
   font-size: 1.7vmax;
 }
 
-.header a {
+.header a,
+.footer a {
   position: relative;
-  font-size: 1.5vmax;
-  color: rgb(2, 70, 20);
+  font-size: 1.6vmax;
+  color: rgb(30, 193, 74);
 }
 
-.header a:hover {
+.header a:hover,
+.footer a:hover {
   color: var(--green-main-color-darker);
 }
 
-.header a::after {
+.header a::after,
+.footer a::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -121,7 +128,43 @@ h2{
   transition: 0.2s ease-in-out;
 }
 
-.header a:hover::after {
+.header a:hover::after,
+.footer a:hover::after {
   width: 100%;
+}
+
+.footer {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  #ExampleCatsComponent {
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 3fr;
+    margin-top: 130px;
+    padding: 6vmax 4vmin 12vmax 4vmin;
+  }
+
+  h1 {
+    font-size: 7vmin;
+  }
+
+  h2 {
+    font-size: 4vmin;
+  }
+  .footer {
+    display: flex;
+  }
+
+  .header a {
+    display: none;
+  }
+  .footer a {
+    margin-top: 35px;
+    font-size: 3.8vmin;
+  }
+  .vueper-slides-containter {
+    margin-top: 50px;
+  }
 }
 </style>

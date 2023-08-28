@@ -1,8 +1,8 @@
 .vueperslide__title {
   position: absolute;
-  bottom: 55px;
-  right: 15px;
-  font-size: 8vmin;
+  bottom: 3vmax;
+  right: 2vmax;
+  font-size: 5vmax;
   color: rgba(255, 255, 255, 0.953);
   text-shadow: 4px 4px 6px rgba(255, 255, 255, 0.284);
 }

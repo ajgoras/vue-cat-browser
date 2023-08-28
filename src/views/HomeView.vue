@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { axiosUrls } from '@/axiosUrls/axiosUrls'
+import ExampleCatsComponent from '@/components/ExampleCatsComponent.vue'
 import HomeGridComponent from '@/components/HomeGridComponent.vue'
 import axios from 'axios'
 import ScrollReveal from 'scrollreveal'
@@ -57,6 +58,7 @@ onMounted(() => {
         <img class="cat-home-side-heart" alt="heart" draggable="false" src="@/assets/heart.png" />
       </div>
     </header>
+    <ExampleCatsComponent/>
   </main>
 </template>
 

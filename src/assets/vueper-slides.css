@@ -1,0 +1,17 @@
+.vueperslide__title {
+  position: absolute;
+  bottom: 55px;
+  right: 15px;
+  font-size: 8vmin;
+  color: rgba(255, 255, 255, 0.953);
+  text-shadow: 4px 4px 6px rgba(255, 255, 255, 0.284);
+}
+
+.vueperslides__parallax-wrapper {
+  box-shadow: none;
+}
+
+.vueperslides:not(.no-shadow):not(.vueperslides--3d) .vueperslides__parallax-wrapper:before,
+.vueperslides:not(.no-shadow):not(.vueperslides--3d) .vueperslides__parallax-wrapper:after {
+  box-shadow: none;
+}

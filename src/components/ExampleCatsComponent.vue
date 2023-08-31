@@ -9,10 +9,25 @@ import ScrollReveal from 'scrollreveal'
 const cats: Ref<CatType[]> = exampleCats()
 
 onMounted(() => {
-  ScrollReveal().reveal('#ExampleCatsComponent', { delay: 200, distance: '30px' })
-  ScrollReveal().reveal('.example-cats-header', { delay: 310, distance: '30px', origin:'left' })
-  ScrollReveal().reveal('.example-cats-footer', { delay: 310, distance: '30px', origin:'left' })
-  ScrollReveal().reveal('.vueper-slides-containter', { delay: 510, distance: '30px', origin: 'right' })
+  ScrollReveal().reveal('#ExampleCatsComponent', { delay: 200, distance: '30px', duration: 750 })
+  ScrollReveal().reveal('.example-cats-header', {
+    delay: 310,
+    distance: '30px',
+    origin: 'left',
+    duration: 750
+  })
+  ScrollReveal().reveal('.example-cats-footer', {
+    delay: 310,
+    distance: '30px',
+    origin: 'left',
+    duration: 750
+  })
+  ScrollReveal().reveal('.vueper-slides-containter', {
+    delay: 510,
+    distance: '30px',
+    origin: 'right',
+    duration: 750
+  })
 })
 </script>
 

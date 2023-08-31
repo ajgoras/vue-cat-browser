@@ -8,7 +8,7 @@ import { getImageUrl } from '@/functions/getImageUrl'
       <h1>Click on cat!</h1>
       <h2>
         If you click on the photo of the cat, you will see more information about the cat. You can
-        also change its data and delete it completely.
+        also change selected cat data or delete cat completely.
       </h2>
     </div>
     <div class="image-container">

@@ -37,6 +37,13 @@ const materials = [
     attributeInfo: `<a href="https://www.flaticon.com/free-icons/cat" title="cat icons">Cat icons created by AomAm - Flaticon</a>`,
     href: `https://www.flaticon.com/free-icons/cat`,
     anchorValue: 'Cat icons created by AomAm - Flaticon'
+  },
+  {
+    imageLink:
+      'https://raw.githubusercontent.com/ajgoras/vue-cat-browser/main/src/assets/pointer.png',
+    attributeInfo: `<a href="https://www.flaticon.com/free-icons/cursor" title="cursor icons">Cursor icons created by Freepik - Flaticon</a>`,
+    href: `https://www.flaticon.com/free-icons/cursor`,
+    anchorValue: 'Cursor icons created by Freepik - Flaticon'
   }
 ]
 

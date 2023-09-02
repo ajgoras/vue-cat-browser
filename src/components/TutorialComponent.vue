@@ -4,7 +4,6 @@ import { onMounted } from 'vue'
 import ScrollReveal from 'scrollreveal'
 
 onMounted(() => {
-  ScrollReveal().reveal('#TutorialComponent', { delay: 200, distance: '30px', duration: 750 })
   ScrollReveal().reveal('.tutorial-component-header', {
     delay: 310,
     distance: '30px',

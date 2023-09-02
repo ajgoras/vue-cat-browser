@@ -9,7 +9,6 @@ import ScrollReveal from 'scrollreveal'
 const cats: Ref<CatType[]> = exampleCats()
 
 onMounted(() => {
-  ScrollReveal().reveal('#ExampleCatsComponent', { delay: 200, distance: '30px', duration: 750 })
   ScrollReveal().reveal('.example-cats-header', {
     delay: 310,
     distance: '30px',
@@ -136,7 +135,7 @@ h2 {
   #ExampleCatsComponent {
     grid-template-columns: auto;
     grid-template-rows: 1fr 3fr;
-    margin-top: 130px;
+    margin-top: 60px;
     padding: 6vmax 4vmin 12vmax 4vmin;
   }
 

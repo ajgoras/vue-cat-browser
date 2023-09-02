@@ -21,7 +21,7 @@ a,
 }
 
 @media only screen and (hover: none) and (pointer: coarse) {
-
+  /* blocked mobile horizontal scrolling */
   html,
   body {
     max-width: 100%;

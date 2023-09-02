@@ -2,6 +2,7 @@
 import { axiosUrls } from '@/axiosUrls/axiosUrls'
 import ExampleCatsComponent from '@/components/ExampleCatsComponent.vue'
 import HomeGridComponent from '@/components/HomeGridComponent.vue'
+import TutorialComponent from '@/components/TutorialComponent.vue'
 import axios from 'axios'
 import ScrollReveal from 'scrollreveal'
 import { onMounted } from 'vue'
@@ -59,6 +60,7 @@ onMounted(() => {
       </div>
     </header>
     <ExampleCatsComponent/>
+    <TutorialComponent></TutorialComponent>
   </main>
 </template>
 

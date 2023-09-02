@@ -1,15 +1,39 @@
 <script setup lang="ts">
 import type { CatType } from '@/types/CatType'
-import { type Ref, ref } from 'vue'
+import { type Ref, ref, onMounted } from 'vue'
 import { VueperSlides, VueperSlide } from 'vueperslides'
 import '../assets/vueper-slides.css'
 import { exampleCats } from '@/functions/exampleCats'
+import ScrollReveal from 'scrollreveal'
+
 const cats: Ref<CatType[]> = exampleCats()
+
+onMounted(() => {
+  ScrollReveal().reveal('#ExampleCatsComponent', { delay: 200, distance: '30px', duration: 750 })
+  ScrollReveal().reveal('.example-cats-header', {
+    delay: 310,
+    distance: '30px',
+    origin: 'left',
+    duration: 750
+  })
+  ScrollReveal().reveal('.example-cats-footer', {
+    delay: 310,
+    distance: '30px',
+    origin: 'left',
+    duration: 750
+  })
+  ScrollReveal().reveal('.vueper-slides-containter', {
+    delay: 510,
+    distance: '30px',
+    origin: 'right',
+    duration: 750
+  })
+})
 </script>
 
 <template>
   <div id="ExampleCatsComponent">
-    <div class="header">
+    <div class="example-cats-header">
       <h1>Some of our cats</h1>
       <h2>Here are some of our wonderful cats</h2>
       <RouterLink to="/browse">Let’s take a look at all cats </RouterLink>
@@ -34,7 +58,7 @@ const cats: Ref<CatType[]> = exampleCats()
         </template>
       </vueper-slides>
     </div>
-    <div class="footer">
+    <div class="example-cats-footer">
       <RouterLink to="/browse">Let’s take a look at all cats </RouterLink>
     </div>
   </div>
@@ -45,12 +69,12 @@ const cats: Ref<CatType[]> = exampleCats()
   display: grid;
   grid-template-columns: 1.8fr 3fr;
   background-color: #5bd77275;
-  margin-top: 110px;
+  margin-top: 60px;
   padding: 12vmax 4vmin 12vmax 1vmin;
 }
 
-.header,
-.footer {
+.example-cats-header,
+.example-cats-footer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,21 +96,21 @@ h2 {
   font-size: 1.7vmax;
 }
 
-.header a,
-.footer a {
+.example-cats-header a,
+.example-cats-footer a {
   position: relative;
   font-size: 1.6vmax;
   color: rgb(30, 193, 74);
   font-weight: bold;
 }
 
-.header a:hover,
-.footer a:hover {
+.example-cats-header a:hover,
+.example-cats-footer a:hover {
   color: var(--green-main-color-darker);
 }
 
-.header a::after,
-.footer a::after {
+.example-cats-header a::after,
+.example-cats-footer a::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -99,12 +123,12 @@ h2 {
   transition: 0.2s ease-in-out;
 }
 
-.header a:hover::after,
-.footer a:hover::after {
+.example-cats-header a:hover::after,
+.example-cats-footer a:hover::after {
   width: 100%;
 }
 
-.footer {
+.example-cats-footer {
   display: none;
 }
 
@@ -123,14 +147,14 @@ h2 {
   h2 {
     font-size: 4vmin;
   }
-  .footer {
+  .example-cats-footer {
     display: flex;
   }
 
-  .header a {
+  .example-cats-header a {
     display: none;
   }
-  .footer a {
+  .example-cats-footer a {
     margin-top: 35px;
     font-size: 3.8vmin;
   }
@@ -147,13 +171,13 @@ h2 {
   h2 {
     color: whitesmoke;
   }
-  .header a:hover,
-  .footer a:hover {
+  .example-cats-header a:hover,
+  .example-cats-footer a:hover {
     color: whitesmoke;
   }
 
-  .header a::after,
-  .footer a::after {
+  .example-cats-header a::after,
+  .example-cats-footer a::after {
     background-color: whitesmoke;
   }
 }

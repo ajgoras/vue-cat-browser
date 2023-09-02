@@ -135,7 +135,7 @@ h2 {
   #ExampleCatsComponent {
     grid-template-columns: auto;
     grid-template-rows: 1fr 3fr;
-    margin-top: 60px;
+    margin-top: 25px;
     padding: 6vmax 4vmin 12vmax 4vmin;
   }
 

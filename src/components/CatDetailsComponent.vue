@@ -16,6 +16,12 @@ const getCat = async () => {
   return data
 }
 
+const removeCat = async () => {
+  axios.delete(axiosUrls.removeCatUrl + `${cat.value.id}`).then((res) => {
+    router.push('/browse')
+  })
+}
+
 onBeforeMount(async () => {
   cat.value = await getCat()
 })
@@ -41,7 +47,9 @@ onMounted(() => {
       <h2 class="cat-description">Hello, my name is {{ cat.name }}</h2>
       <h3 class="cat-description">I am {{ cat.age }} years old</h3>
       <h4 class="cat-description">My fur is {{ cat.color }}</h4>
-      <button class="cat-description remove-cat-button">Remove {{ cat.name }}</button>
+      <button class="cat-description remove-cat-button" @click="removeCat">
+        Remove {{ cat.name }}
+      </button>
     </div>
   </div>
 </template>
@@ -151,11 +159,11 @@ onMounted(() => {
     background-color: var(--vt-c-black-soft);
     color: var(--green-main-color-lighter);
   }
-  .remove-cat-button{
+  .remove-cat-button {
     background-color: var(--danger-main-color-darker);
     border: 2px var(--danger-main-color-darkest) solid;
   }
-  .remove-cat-button:hover{
+  .remove-cat-button:hover {
     background-color: var(--vt-c-black-soft);
     color: var(--danger-main-color-lighter);
   }

@@ -43,4 +43,19 @@ const props = defineProps<{
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+@media (prefers-color-scheme: dark) {
+  .modal-content {
+    background-color: var(--vt-c-black-soft);
+    color: whitesmoke;
+  }
+
+  .modal-header {
+    border-bottom: #8080805d solid 1px;
+  }
+
+  .modal-footer {
+    border-top: #8080805d solid 1px;
+  }
+}
+</style>

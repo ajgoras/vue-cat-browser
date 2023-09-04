@@ -5,6 +5,7 @@ import type { CatType } from '@/types/CatType'
 import axios from 'axios'
 import { onBeforeMount, onMounted, ref, type Ref } from 'vue'
 import ScrollReveal from 'scrollreveal'
+import RemoveModal from './RemoveModal.vue'
 const cat: Ref<CatType> = ref({ id: '', name: '', color: '', age: 0, image: '' })
 
 const getCat = async () => {
@@ -14,6 +15,12 @@ const getCat = async () => {
       return res.data
     })
   return data
+}
+
+const removeCat = async () => {
+  axios.delete(axiosUrls.removeCatUrl + `${cat.value.id}`).then((res) => {
+    router.push('/browse')
+  })
 }
 
 onBeforeMount(async () => {
@@ -33,6 +40,11 @@ onMounted(() => {
 
 <template>
   <div id="CatDetailsComponent">
+    <RemoveModal
+      :title="'You are going to remove ' + cat.name"
+      body="Are you sure? This action is irreversible!"
+      :function="removeCat"
+    />
     <div class="return-to-cats-container">
       <RouterLink to="/browse">&lt Return to cats</RouterLink>
     </div>
@@ -41,6 +53,13 @@ onMounted(() => {
       <h2 class="cat-description">Hello, my name is {{ cat.name }}</h2>
       <h3 class="cat-description">I am {{ cat.age }} years old</h3>
       <h4 class="cat-description">My fur is {{ cat.color }}</h4>
+      <button
+        class="cat-description remove-cat-button"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        Remove {{ cat.name }}
+      </button>
     </div>
   </div>
 </template>
@@ -97,6 +116,20 @@ onMounted(() => {
   color: var(--green-main-color);
 }
 
+.remove-cat-button {
+  padding: 1vmin 1.5vmin 1vmin 1.5vmin;
+  border: 2px var(--danger-main-color-darker) solid;
+  border-radius: 50px;
+  background-color: var(--danger-main-color);
+  color: whitesmoke;
+  transition: all 0.2s ease-in-out;
+  font-weight: bold;
+}
+.remove-cat-button:hover {
+  background-color: whitesmoke;
+  color: var(--danger-main-color);
+}
+
 @media (max-width: 600px) {
   .return-to-cats-container {
     font-size: 3vmin;
@@ -135,6 +168,14 @@ onMounted(() => {
   .return-to-cats-container a:hover {
     background-color: var(--vt-c-black-soft);
     color: var(--green-main-color-lighter);
+  }
+  .remove-cat-button {
+    background-color: var(--danger-main-color-darker);
+    border: 2px var(--danger-main-color-darkest) solid;
+  }
+  .remove-cat-button:hover {
+    background-color: var(--vt-c-black-soft);
+    color: var(--danger-main-color-lighter);
   }
 }
 </style>

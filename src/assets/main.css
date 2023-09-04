@@ -5,6 +5,10 @@
   --green-main-color-darker: #007e54;
   --green-main-color-lighter: #00de94;
   --green-main-color-darkest: #00402b;
+  --danger-main-color: #aa0404;
+  --danger-main-color-lighter: #ff6969;
+  --danger-main-color-darker: #800101;
+  --danger-main-color-darkest: #460000;
 }
 
 * {

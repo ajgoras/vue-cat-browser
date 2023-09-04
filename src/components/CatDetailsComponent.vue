@@ -5,6 +5,7 @@ import type { CatType } from '@/types/CatType'
 import axios from 'axios'
 import { onBeforeMount, onMounted, ref, type Ref } from 'vue'
 import ScrollReveal from 'scrollreveal'
+import RemoveModal from './RemoveModal.vue'
 const cat: Ref<CatType> = ref({ id: '', name: '', color: '', age: 0, image: '' })
 
 const getCat = async () => {
@@ -39,6 +40,11 @@ onMounted(() => {
 
 <template>
   <div id="CatDetailsComponent">
+    <RemoveModal
+      :title="'You are going to remove ' + cat.name"
+      body="Are you sure? This action is irreversible!"
+      :function="removeCat"
+    />
     <div class="return-to-cats-container">
       <RouterLink to="/browse">&lt Return to cats</RouterLink>
     </div>
@@ -47,7 +53,11 @@ onMounted(() => {
       <h2 class="cat-description">Hello, my name is {{ cat.name }}</h2>
       <h3 class="cat-description">I am {{ cat.age }} years old</h3>
       <h4 class="cat-description">My fur is {{ cat.color }}</h4>
-      <button class="cat-description remove-cat-button" @click="removeCat">
+      <button
+        class="cat-description remove-cat-button"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
         Remove {{ cat.name }}
       </button>
     </div>

@@ -9,6 +9,10 @@
   --danger-main-color-lighter: #ff6969;
   --danger-main-color-darker: #800101;
   --danger-main-color-darkest: #460000;
+  --warning-main-color: #d58309;
+  --warning-main-color-lighter: #f3a93a;
+  --warning-main-color-darker: #915701;
+  --warning-main-color-darkest: #573501;
 }
 
 * {

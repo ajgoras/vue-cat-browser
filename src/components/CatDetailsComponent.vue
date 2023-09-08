@@ -53,13 +53,16 @@ onMounted(() => {
       <h2 class="cat-description">Hello, my name is {{ cat.name }}</h2>
       <h3 class="cat-description">I am {{ cat.age }} years old</h3>
       <h4 class="cat-description">My fur is {{ cat.color }}</h4>
-      <button
-        class="cat-description remove-cat-button"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
-        Remove {{ cat.name }}
-      </button>
+      <div class="cat-buttons-container">
+        <button
+          class="cat-description remove-cat-button"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Remove {{ cat.name }}
+        </button>
+        <button class="edit-cat-button">Edit {{ cat.name }}</button>
+      </div>
     </div>
   </div>
 </template>
@@ -116,6 +119,13 @@ onMounted(() => {
   color: var(--green-main-color);
 }
 
+.cat-buttons-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
 .remove-cat-button {
   padding: 1vmin 1.5vmin 1vmin 1.5vmin;
   border: 2px var(--danger-main-color-darker) solid;
@@ -125,9 +135,25 @@ onMounted(() => {
   transition: all 0.2s ease-in-out;
   font-weight: bold;
 }
+
+.edit-cat-button {
+  padding: 1vmin 1.5vmin 1vmin 1.5vmin;
+  border: 2px var(--warning-main-color-darker) solid;
+  border-radius: 50px;
+  background-color: var(--warning-main-color);
+  color: whitesmoke;
+  transition: all 0.2s ease-in-out;
+  font-weight: bold;
+}
+
 .remove-cat-button:hover {
   background-color: whitesmoke;
   color: var(--danger-main-color);
+}
+
+.edit-cat-button:hover {
+  background-color: whitesmoke;
+  color: var(--warning-main-color);
 }
 
 @media (max-width: 600px) {
@@ -173,9 +199,17 @@ onMounted(() => {
     background-color: var(--danger-main-color-darker);
     border: 2px var(--danger-main-color-darkest) solid;
   }
+  .edit-cat-button {
+    background-color: var(--warning-main-color-darker);
+    border: 2px var(--warning-main-color-darkest) solid;
+  }
   .remove-cat-button:hover {
     background-color: var(--vt-c-black-soft);
     color: var(--danger-main-color-lighter);
+  }
+  .edit-cat-button:hover {
+    background-color: var(--vt-c-black-soft);
+    color: var(--warning-main-color-lighter);
   }
 }
 </style>

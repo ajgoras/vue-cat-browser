@@ -54,7 +54,7 @@ public class CatsController : ControllerBase
 
     await _catsService.UpdateAsync(id, updatedCat);
 
-    return NoContent();
+    return Ok($"Cat '{updatedCat.Name}' updated");
   }
 
   [HttpDelete("{id:length(24)}")]
@@ -69,6 +69,6 @@ public class CatsController : ControllerBase
 
     await _catsService.RemoveAsync(id);
 
-    return NoContent();
+    return Ok($"Cat '{cat.Name}' sucessfully removed");
   }
 }

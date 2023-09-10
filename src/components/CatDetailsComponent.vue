@@ -6,7 +6,10 @@ import axios from 'axios'
 import { onBeforeMount, onMounted, ref, type Ref } from 'vue'
 import ScrollReveal from 'scrollreveal'
 import RemoveModal from './RemoveModal.vue'
+
 const cat: Ref<CatType> = ref({ id: '', name: '', color: '', age: 0, image: '' })
+const editCatValue: Ref<CatType> = ref({ id: '', name: '', color: '', age: 0, image: '' })
+const isEditModeActive: Ref<boolean> = ref(false)
 
 const getCat = async () => {
   const data: Promise<CatType> = axios
@@ -17,14 +20,30 @@ const getCat = async () => {
   return data
 }
 
+const sendChangesToDB = async () => {
+  axios.put(axiosUrls.editCatUrl + `${cat.value.id}`, editCatValue.value)
+}
+
 const removeCat = async () => {
   axios.delete(axiosUrls.removeCatUrl + `${cat.value.id}`).then((res) => {
     router.push('/browse')
   })
 }
 
+const discardChanges = () => {
+  isEditModeActive.value = !isEditModeActive
+  editCatValue.value = { ...cat.value }
+}
+
+const saveChanges = () => {
+  cat.value = { ...editCatValue.value }
+  isEditModeActive.value = !isEditModeActive
+  sendChangesToDB()
+}
+
 onBeforeMount(async () => {
   cat.value = await getCat()
+  editCatValue.value = await getCat()
 })
 
 onMounted(() => {
@@ -48,18 +67,36 @@ onMounted(() => {
     <div class="return-to-cats-container">
       <RouterLink to="/browse">&lt Return to cats</RouterLink>
     </div>
-    <div class="cat-element">
+    <div v-if="!isEditModeActive" class="cat-element">
       <img :id="cat.id" class="cat-photo" alt="cat-photo" draggable="false" :src="cat.image" />
       <h2 class="cat-description">Hello, my name is {{ cat.name }}</h2>
       <h3 class="cat-description">I am {{ cat.age }} years old</h3>
       <h4 class="cat-description">My fur is {{ cat.color }}</h4>
-      <button
-        class="cat-description remove-cat-button"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
-        Remove {{ cat.name }}
-      </button>
+      <div class="cat-buttons-container">
+        <button
+          class="cat-description edit-cat-button"
+          @click="isEditModeActive = !isEditModeActive"
+        >
+          Edit {{ cat.name }}
+        </button>
+        <button
+          class="cat-description remove-cat-button"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Remove {{ cat.name }}
+        </button>
+      </div>
+    </div>
+    <div v-if="isEditModeActive" class="cat-element cat-element-edit-mode">
+      <img :id="cat.id" class="cat-photo" alt="cat-photo" draggable="false" :src="cat.image" />
+      <input class="cat-detail-input" v-model="editCatValue.name" />
+      <input class="cat-detail-input" v-model="editCatValue.age" type="number" />
+      <input class="cat-detail-input" v-model="editCatValue.color" />
+      <div class="cat-buttons-container">
+        <button @click="discardChanges" class="edit-cat-button">Discard Changes</button>
+        <button @click="saveChanges" class="save-changes-button">Save Changes</button>
+      </div>
     </div>
   </div>
 </template>
@@ -116,6 +153,13 @@ onMounted(() => {
   color: var(--green-main-color);
 }
 
+.cat-buttons-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
 .remove-cat-button {
   padding: 1vmin 1.5vmin 1vmin 1.5vmin;
   border: 2px var(--danger-main-color-darker) solid;
@@ -125,9 +169,69 @@ onMounted(() => {
   transition: all 0.2s ease-in-out;
   font-weight: bold;
 }
+
+.edit-cat-button {
+  padding: 1vmin 1.5vmin 1vmin 1.5vmin;
+  border: 2px var(--warning-main-color-darker) solid;
+  border-radius: 50px;
+  background-color: var(--warning-main-color);
+  color: whitesmoke;
+  transition: all 0.2s ease-in-out;
+  font-weight: bold;
+}
+.save-changes-button {
+  padding: 1vmin 1.5vmin 1vmin 1.5vmin;
+  border: 2px var(--green-main-color-darker) solid;
+  border-radius: 50px;
+  background-color: var(--green-main-color);
+  color: whitesmoke;
+  transition: all 0.2s ease-in-out;
+  font-weight: bold;
+}
+
 .remove-cat-button:hover {
   background-color: whitesmoke;
   color: var(--danger-main-color);
+}
+
+.edit-cat-button:hover {
+  background-color: whitesmoke;
+  color: var(--warning-main-color);
+}
+
+.save-changes-button:hover {
+  background-color: whitesmoke;
+  color: var(--green-main-color);
+}
+
+.cat-detail-input {
+  background-color: whitesmoke;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.21);
+  font-size: calc(1.325rem + 0.9vw);
+  height: 40px;
+  width: 200px;
+  border-radius: 8px;
+}
+.cat-detail-input:nth-of-type(2) {
+  font-size: calc(1.3rem + 0.6vw);
+}
+.cat-detail-input:nth-of-type(3) {
+  font-size: calc(1.275rem + 0.3vw);
+  margin-bottom: 10px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  appearance: textfield;
+}
+input:focus {
+  outline: none;
 }
 
 @media (max-width: 600px) {
@@ -173,9 +277,30 @@ onMounted(() => {
     background-color: var(--danger-main-color-darker);
     border: 2px var(--danger-main-color-darkest) solid;
   }
+  .edit-cat-button {
+    background-color: var(--warning-main-color-darker);
+    border: 2px var(--warning-main-color-darkest) solid;
+  }
+  .save-changes-button {
+    background-color: var(--green-main-color-darker);
+    border: 2px var(--green-main-color-darkest) solid;
+  }
   .remove-cat-button:hover {
     background-color: var(--vt-c-black-soft);
     color: var(--danger-main-color-lighter);
+  }
+  .edit-cat-button:hover {
+    background-color: var(--vt-c-black-soft);
+    color: var(--warning-main-color-lighter);
+  }
+  .save-changes-button:hover {
+    background-color: var(--vt-c-black-soft);
+    color: var(--green-main-color-lighter);
+  }
+
+  .cat-detail-input {
+    background-color: var(--vt-c-black-soft);
+    color: whitesmoke;
   }
 }
 </style>

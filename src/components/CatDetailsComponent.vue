@@ -21,7 +21,7 @@ const getCat = async () => {
 }
 
 const sendChangesToDB = async () => {
-  //TODO:
+  axios.put(axiosUrls.editCatUrl + `${cat.value.id}`, editCatValue.value)
 }
 
 const removeCat = async () => {

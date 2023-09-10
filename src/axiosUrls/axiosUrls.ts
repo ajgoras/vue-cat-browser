@@ -13,5 +13,6 @@ if (
 export const axiosUrls = {
   getCatsUrl: `${serverUrl}/cats`,
   getCatUrl: `${serverUrl}/cats/`,
-  removeCatUrl: `${serverUrl}/cats/`
+  removeCatUrl: `${serverUrl}/cats/`,
+  editCatUrl: `${serverUrl}/cats/`
 }

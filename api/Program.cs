@@ -17,14 +17,14 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options =>
 {
-  options.AddPolicy(name: myAllowSpecificOrigins,
-                    policy =>
-                    {
-                      policy.WithOrigins("http://127.0.0.1:5173",
-                      "https://127.0.0.1:5173",
-                      "http://catbrowser.netlify.app",
-                      "https://catbrowser.netlify.app").WithMethods("GET", "POST", "PUT", "DELETE").AllowAnyHeader();
-                    });
+    options.AddPolicy(name: myAllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("http://127.0.0.1:5173",
+                "https://127.0.0.1:5173",
+                "http://catbrowser.netlify.app",
+                "https://catbrowser.netlify.app").WithMethods("GET", "POST", "PUT", "DELETE").AllowAnyHeader();
+        });
 });
 
 var app = builder.Build();
@@ -32,8 +32,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-  app.UseSwagger();
-  app.UseSwaggerUI();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

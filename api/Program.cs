@@ -2,7 +2,7 @@ using vue_cat_browser_api.Models;
 using vue_cat_browser_api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 
 // Add services to the container.
@@ -17,7 +17,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options =>
 {
-  options.AddPolicy(name: MyAllowSpecificOrigins,
+  options.AddPolicy(name: myAllowSpecificOrigins,
                     policy =>
                     {
                       policy.WithOrigins("http://127.0.0.1:5173",
@@ -42,6 +42,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseCors(MyAllowSpecificOrigins);
+app.UseCors(myAllowSpecificOrigins);
 
 app.Run();

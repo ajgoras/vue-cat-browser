@@ -3,34 +3,36 @@ using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using Newtonsoft.Json;
 
+namespace vue_cat_browser_api.Services;
+
 public class DbInitializerHostedService : IHostedService
 {
-  private readonly IMongoCollection<Cat> _catsCollection;
+    private readonly IMongoCollection<Cat> _catsCollection;
 
-  public DbInitializerHostedService(
-      IOptions<CatsDatabaseSettings> catsDatabaseSettings)
-  {
-    var mongoClient = new MongoClient(
-        catsDatabaseSettings.Value.ConnectionString);
+    public DbInitializerHostedService(
+        IOptions<CatsDatabaseSettings> catsDatabaseSettings)
+    {
+        var mongoClient = new MongoClient(
+            catsDatabaseSettings.Value.ConnectionString);
 
-    var mongoDatabase = mongoClient.GetDatabase(
-        catsDatabaseSettings.Value.DatabaseName);
+        var mongoDatabase = mongoClient.GetDatabase(
+            catsDatabaseSettings.Value.DatabaseName);
 
-    _catsCollection = mongoDatabase.GetCollection<Cat>(
-        catsDatabaseSettings.Value.CatsCollectionName);
-  }
+        _catsCollection = mongoDatabase.GetCollection<Cat>(
+            catsDatabaseSettings.Value.CatsCollectionName);
+    }
 
-  public async Task StartAsync(CancellationToken stoppingToken)
-  {
-    await _catsCollection.DeleteManyAsync(Builders<Cat>.Filter.Empty);
-    StreamReader r = new StreamReader("jsons/cats.json");
-    string json = r.ReadToEnd();
-    var catsFromJson = JsonConvert.DeserializeObject<List<Cat>>(json);
-    await _catsCollection.InsertManyAsync(catsFromJson);
-  }
+    public async Task StartAsync(CancellationToken stoppingToken)
+    {
+        await _catsCollection.DeleteManyAsync(Builders<Cat>.Filter.Empty);
+        StreamReader r = new StreamReader("jsons/cats.json");
+        string json = r.ReadToEnd();
+        var catsFromJson = JsonConvert.DeserializeObject<List<Cat>>(json);
+        await _catsCollection.InsertManyAsync(catsFromJson);
+    }
 
-  public Task StopAsync(CancellationToken stoppingToken)
-  {
-    return Task.CompletedTask;
-  }
+    public Task StopAsync(CancellationToken stoppingToken)
+    {
+        return Task.CompletedTask;
+    }
 }

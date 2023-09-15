@@ -8,67 +8,67 @@ namespace vue_cat_browser_api.Controllers;
 [Route("api/[controller]")]
 public class CatsController : ControllerBase
 {
-  private readonly CatsService _catsService;
+    private readonly CatsService _catsService;
 
-  public CatsController(CatsService catsService)
-  {
-    _catsService = catsService;
-  }
+    public CatsController(CatsService catsService)
+    {
+        _catsService = catsService;
+    }
 
-  [HttpGet]
-  public async Task<List<Cat>> Get() =>
+    [HttpGet]
+    public async Task<List<Cat>> Get() =>
         await _catsService.GetAsync();
 
-  [HttpGet("{id:length(24)}")]
-  public async Task<ActionResult<Cat>> Get(string id)
-  {
-    var cat = await _catsService.GetAsync(id);
-
-    if (cat is null)
+    [HttpGet("{id:length(24)}")]
+    public async Task<ActionResult<Cat>> Get(string id)
     {
-      return NotFound();
+        var cat = await _catsService.GetAsync(id);
+
+        if (cat is null)
+        {
+            return NotFound();
+        }
+
+        return cat;
     }
 
-    return cat;
-  }
-
-  [HttpPost]
-  public async Task<IActionResult> Post(Cat newCat)
-  {
-    await _catsService.CreateAsync(newCat);
-
-    return CreatedAtAction(nameof(Get), new { id = newCat.Id }, newCat);
-  }
-
-  [HttpPut("{id:length(24)}")]
-  public async Task<IActionResult> Update(string id, Cat updatedCat)
-  {
-    var cat = await _catsService.GetAsync(id);
-
-    if (cat is null)
+    [HttpPost]
+    public async Task<IActionResult> Post(Cat newCat)
     {
-      return NotFound();
+        await _catsService.CreateAsync(newCat);
+
+        return CreatedAtAction(nameof(Get), new { id = newCat.Id }, newCat);
     }
 
-    updatedCat.Id = cat.Id;
-
-    await _catsService.UpdateAsync(id, updatedCat);
-
-    return Ok($"Cat '{updatedCat.Name}' updated");
-  }
-
-  [HttpDelete("{id:length(24)}")]
-  public async Task<IActionResult> Delete(string id)
-  {
-    var cat = await _catsService.GetAsync(id);
-
-    if (cat is null)
+    [HttpPut("{id:length(24)}")]
+    public async Task<IActionResult> Update(string id, Cat updatedCat)
     {
-      return NotFound();
+        var cat = await _catsService.GetAsync(id);
+
+        if (cat is null)
+        {
+            return NotFound();
+        }
+
+        updatedCat.Id = cat.Id;
+
+        await _catsService.UpdateAsync(id, updatedCat);
+
+        return Ok($"Cat '{updatedCat.Name}' updated");
     }
 
-    await _catsService.RemoveAsync(id);
+    [HttpDelete("{id:length(24)}")]
+    public async Task<IActionResult> Delete(string id)
+    {
+        var cat = await _catsService.GetAsync(id);
 
-    return Ok($"Cat '{cat.Name}' sucessfully removed");
-  }
+        if (cat is null)
+        {
+            return NotFound();
+        }
+
+        await _catsService.RemoveAsync(id);
+
+        return Ok($"Cat '{cat.Name}' successfully removed");
+    }
 }

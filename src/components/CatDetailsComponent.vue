@@ -31,13 +31,13 @@ const removeCat = async () => {
 }
 
 const discardChanges = () => {
-  isEditModeActive.value = !isEditModeActive
+  isEditModeActive.value = !isEditModeActive.value
   editCatValue.value = { ...cat.value }
 }
 
 const saveChanges = () => {
   cat.value = { ...editCatValue.value }
-  isEditModeActive.value = !isEditModeActive
+  isEditModeActive.value = !isEditModeActive.value
   sendChangesToDB()
 }
 

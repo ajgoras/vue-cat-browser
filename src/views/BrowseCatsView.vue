@@ -3,7 +3,7 @@ import CatComponent from '@/components/CatComponent.vue'
 import type { CatType } from '@/types/CatType'
 import axios from 'axios'
 import { onBeforeMount, ref, watch, type Ref, onMounted } from 'vue'
-import { axiosUrls } from '../axiosUrls/axiosUrls'
+import { axiosUrls } from '@/axiosUrls/axiosUrls'
 import ScrollReveal from 'scrollreveal'
 
 const cats: Ref<CatType[]> = ref([])
@@ -89,7 +89,7 @@ watch(isCatsLoadingLongerThan5sec, () => {
     <div v-if="isBackendError">
       <div class="backend-error">
         <h1>Backend server error..</h1>
-        <img src="../assets/sad-cat.png" />
+        <img src="../assets/sad-cat.png"  alt="sad cat image"/>
         <h2>Try to refresh the page</h2>
       </div>
     </div>
@@ -162,8 +162,7 @@ watch(isCatsLoadingLongerThan5sec, () => {
 .backend-error {
   position: absolute;
   width: 85%;
-  margin: auto;
-  margin-top: 100px;
+  margin: 100px auto auto;
   display: flex;
   flex-direction: column;
   align-items: center;

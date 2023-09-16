@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { getImageUrl } from '@/functions/getImageUrl'
-import type { CreditMaterialType } from '@/types/CreditMaterialType'
+import {getImageUrl} from '@/functions/getImageUrl'
+import type {CreditMaterialType} from '@/types/CreditMaterialType'
 
 defineProps<{
   material: CreditMaterialType
@@ -9,7 +9,7 @@ defineProps<{
 
 <template>
   <div class="material">
-    <img draggable="false" :src="getImageUrl(material.imageLink)" />
+    <img draggable="false" :src="getImageUrl(material.imageLink)" alt="credit material image"/>
     <a :href="material.href">{{ material.anchorValue }}</a>
   </div>
 </template>
@@ -29,6 +29,7 @@ defineProps<{
   margin: -1px -1px 30px -1px;
   transition: all 0.3s ease-in-out;
 }
+
 .material:hover {
   outline: 1px solid rgb(85, 85, 85);
 }
@@ -45,11 +46,11 @@ defineProps<{
   transition: all 0.3s ease-in-out;
 }
 
-.material:hover img{
+.material:hover img {
   background-color: var(--green-main-color-darker);
 }
 
-.material:hover a{
+.material:hover a {
   color: var(--green-main-color-darker);
 }
 </style>

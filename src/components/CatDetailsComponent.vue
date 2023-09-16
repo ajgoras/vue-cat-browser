@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { axiosUrls } from '@/axiosUrls/axiosUrls'
+import {axiosUrls} from '@/axiosUrls/axiosUrls'
 import router from '@/router'
-import type { CatType } from '@/types/CatType'
+import type {CatType} from '@/types/CatType'
 import axios from 'axios'
-import { onBeforeMount, onMounted, ref, type Ref } from 'vue'
+import {onBeforeMount, onMounted, ref, type Ref} from 'vue'
 import ScrollReveal from 'scrollreveal'
 import RemoveModal from './RemoveModal.vue'
 
-const cat: Ref<CatType> = ref({ id: '', name: '', color: '', age: 0, image: '' })
-const editCatValue: Ref<CatType> = ref({ id: '', name: '', color: '', age: 0, image: '' })
+const cat: Ref<CatType> = ref({id: '', name: '', color: '', age: 0, image: ''})
+const editCatValue: Ref<CatType> = ref({id: '', name: '', color: '', age: 0, image: ''})
 const isEditModeActive: Ref<boolean> = ref(false)
 
 const getCat = async () => {
@@ -21,22 +21,22 @@ const getCat = async () => {
 }
 
 const sendChangesToDB = async () => {
-  axios.put(axiosUrls.editCatUrl + `${cat.value.id}`, editCatValue.value)
+  await axios.put(axiosUrls.editCatUrl + `${cat.value.id}`, editCatValue.value)
 }
 
 const removeCat = async () => {
-  axios.delete(axiosUrls.removeCatUrl + `${cat.value.id}`).then((res) => {
+  axios.delete(axiosUrls.removeCatUrl + `${cat.value.id}`).then(() => {
     router.push('/browse')
   })
 }
 
 const discardChanges = () => {
   isEditModeActive.value = !isEditModeActive.value
-  editCatValue.value = { ...cat.value }
+  editCatValue.value = {...cat.value}
 }
 
 const saveChanges = () => {
-  cat.value = { ...editCatValue.value }
+  cat.value = {...editCatValue.value}
   isEditModeActive.value = !isEditModeActive.value
   sendChangesToDB()
 }
@@ -48,11 +48,11 @@ onBeforeMount(async () => {
 
 onMounted(() => {
   setTimeout(() => {
-    ScrollReveal().reveal('.return-to-cats-container', { delay: 1500 })
-    ScrollReveal().reveal('#CatDetailsComponent', { delay: 250 })
-    ScrollReveal().reveal('.cat-element', { delay: 350 })
-    ScrollReveal().reveal('.cat-photo', { delay: 650 })
-    ScrollReveal().reveal('.cat-description', { delay: 1000, interval: 120 })
+    ScrollReveal().reveal('.return-to-cats-container', {delay: 1500})
+    ScrollReveal().reveal('#CatDetailsComponent', {delay: 250})
+    ScrollReveal().reveal('.cat-element', {delay: 350})
+    ScrollReveal().reveal('.cat-photo', {delay: 650})
+    ScrollReveal().reveal('.cat-description', {delay: 1000, interval: 120})
   }, 0)
 })
 </script>
@@ -65,10 +65,10 @@ onMounted(() => {
       :function="removeCat"
     />
     <div class="return-to-cats-container">
-      <RouterLink to="/browse">&lt Return to cats</RouterLink>
+      <RouterLink to="/browse">↩️ Return to cats</RouterLink>
     </div>
     <div v-if="!isEditModeActive" class="cat-element">
-      <img :id="cat.id" class="cat-photo" alt="cat-photo" draggable="false" :src="cat.image" />
+      <img :id="cat.id" class="cat-photo" alt="cat-photo" draggable="false" :src="cat.image"/>
       <h2 class="cat-description">Hello, my name is {{ cat.name }}</h2>
       <h3 class="cat-description">I am {{ cat.age }} years old</h3>
       <h4 class="cat-description">My fur is {{ cat.color }}</h4>
@@ -89,10 +89,10 @@ onMounted(() => {
       </div>
     </div>
     <div v-if="isEditModeActive" class="cat-element cat-element-edit-mode">
-      <img :id="cat.id" class="cat-photo" alt="cat-photo" draggable="false" :src="cat.image" />
-      <input class="cat-detail-input" v-model="editCatValue.name" />
-      <input class="cat-detail-input" v-model="editCatValue.age" type="number" />
-      <input class="cat-detail-input" v-model="editCatValue.color" />
+      <img :id="cat.id" class="cat-photo" alt="cat-photo" draggable="false" :src="cat.image"/>
+      <input class="cat-detail-input" v-model="editCatValue.name"/>
+      <input class="cat-detail-input" v-model="editCatValue.age" type="number"/>
+      <input class="cat-detail-input" v-model="editCatValue.color"/>
       <div class="cat-buttons-container">
         <button @click="discardChanges" class="edit-cat-button">Discard Changes</button>
         <button @click="saveChanges" class="save-changes-button">Save Changes</button>
@@ -111,6 +111,7 @@ onMounted(() => {
   gap: 30px;
   margin-bottom: 10vmin;
 }
+
 .cat-element {
   display: flex;
   justify-content: center;
@@ -122,16 +123,17 @@ onMounted(() => {
   border-radius: 5px;
   transition: outline 0.2s ease-in-out;
 }
+
 .cat-element:hover {
   outline: 2px solid rgba(0, 0, 0, 0.471);
 }
+
 .cat-photo {
   object-fit: contain;
   height: auto;
   width: auto;
   max-width: 85vmin;
   max-height: 85vmin;
-  object-fit: contain;
   border-radius: 7px;
 }
 
@@ -140,6 +142,7 @@ onMounted(() => {
   font-weight: bold;
   user-select: none;
 }
+
 .return-to-cats-container a {
   padding: 1vmin 1.5vmin 1vmin 1.5vmin;
   border: 2px var(--green-main-color-darker) solid;
@@ -179,6 +182,7 @@ onMounted(() => {
   transition: all 0.2s ease-in-out;
   font-weight: bold;
 }
+
 .save-changes-button {
   padding: 1vmin 1.5vmin 1vmin 1.5vmin;
   border: 2px var(--green-main-color-darker) solid;
@@ -213,9 +217,11 @@ onMounted(() => {
   width: 200px;
   border-radius: 8px;
 }
+
 .cat-detail-input:nth-of-type(2) {
   font-size: calc(1.3rem + 0.6vw);
 }
+
 .cat-detail-input:nth-of-type(3) {
   font-size: calc(1.275rem + 0.3vw);
   margin-bottom: 10px;
@@ -230,6 +236,7 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
   appearance: textfield;
 }
+
 input:focus {
   outline: none;
 }
@@ -249,7 +256,6 @@ input:focus {
     width: auto;
     max-width: 88vmin;
     max-height: 88vmin;
-    object-fit: contain;
     border-radius: 7px;
   }
 
@@ -262,37 +268,46 @@ input:focus {
   .cat-element {
     outline: 2px solid rgba(154, 154, 154, 0.2);
   }
+
   .cat-element:hover {
     outline: 2px solid rgba(255, 255, 255, 0.296);
   }
+
   .return-to-cats-container a {
     background-color: var(--green-main-color-darker);
     border: 2px var(--green-main-color-darkest) solid;
   }
+
   .return-to-cats-container a:hover {
     background-color: var(--vt-c-black-soft);
     color: var(--green-main-color-lighter);
   }
+
   .remove-cat-button {
     background-color: var(--danger-main-color-darker);
     border: 2px var(--danger-main-color-darkest) solid;
   }
+
   .edit-cat-button {
     background-color: var(--warning-main-color-darker);
     border: 2px var(--warning-main-color-darkest) solid;
   }
+
   .save-changes-button {
     background-color: var(--green-main-color-darker);
     border: 2px var(--green-main-color-darkest) solid;
   }
+
   .remove-cat-button:hover {
     background-color: var(--vt-c-black-soft);
     color: var(--danger-main-color-lighter);
   }
+
   .edit-cat-button:hover {
     background-color: var(--vt-c-black-soft);
     color: var(--warning-main-color-lighter);
   }
+
   .save-changes-button:hover {
     background-color: var(--vt-c-black-soft);
     color: var(--green-main-color-lighter);

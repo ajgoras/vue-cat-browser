@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { CatType } from '@/types/CatType'
-import { type Ref, ref, onMounted } from 'vue'
-import { VueperSlides, VueperSlide } from 'vueperslides'
+import type {CatType} from '@/types/CatType'
+import {type Ref, onMounted} from 'vue'
+import {VueperSlides, VueperSlide} from 'vueperslides'
 import '../assets/vueper-slides.css'
-import { exampleCats } from '@/functions/exampleCats'
+import {exampleCats} from '@/functions/exampleCats'
 import ScrollReveal from 'scrollreveal'
 
 const cats: Ref<CatType[]> = exampleCats()
@@ -21,7 +21,7 @@ onMounted(() => {
     origin: 'left',
     duration: 750
   })
-  ScrollReveal().reveal('.vueper-slides-containter', {
+  ScrollReveal().reveal('.vueper-slides-container', {
     delay: 510,
     distance: '30px',
     origin: 'right',
@@ -35,9 +35,9 @@ onMounted(() => {
     <div class="example-cats-header">
       <h1>Some of our cats</h1>
       <h2>Here are some of our wonderful cats</h2>
-      <RouterLink to="/browse">Let’s take a look at all cats </RouterLink>
+      <RouterLink to="/browse">Let’s take a look at all cats</RouterLink>
     </div>
-    <div class="vueper-slides-containter">
+    <div class="vueper-slides-container">
       <vueper-slides
         :touchable="false"
         :slide-ratio="1 / 1.8"
@@ -58,7 +58,7 @@ onMounted(() => {
       </vueper-slides>
     </div>
     <div class="example-cats-footer">
-      <RouterLink to="/browse">Let’s take a look at all cats </RouterLink>
+      <RouterLink to="/browse">Let’s take a look at all cats</RouterLink>
     </div>
   </div>
 </template>
@@ -83,14 +83,14 @@ onMounted(() => {
 
 h1 {
   color: black;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', serif;
   font-weight: bold;
   font-size: 3.3vmax;
 }
 
 h2 {
   color: black;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat', serif;
   font-weight: bold;
   font-size: 1.7vmax;
 }
@@ -114,8 +114,7 @@ h2 {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 0%;
-  height: 0.15em;
+  width: 0;
   border-radius: 10px;
   background-color: var(--green-main-color-darker);
   height: 2px;
@@ -146,6 +145,7 @@ h2 {
   h2 {
     font-size: 4vmin;
   }
+
   .example-cats-footer {
     display: flex;
   }
@@ -153,11 +153,13 @@ h2 {
   .example-cats-header a {
     display: none;
   }
+
   .example-cats-footer a {
     margin-top: 35px;
     font-size: 3.8vmin;
   }
-  .vueper-slides-containter {
+
+  .vueper-slides-container {
     margin-top: 50px;
   }
 }
@@ -166,10 +168,12 @@ h2 {
   #ExampleCatsComponent {
     background-color: #46a35798;
   }
+
   h1,
   h2 {
     color: whitesmoke;
   }
+
   .example-cats-header a:hover,
   .example-cats-footer a:hover {
     color: whitesmoke;

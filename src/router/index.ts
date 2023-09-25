@@ -28,7 +28,12 @@ const router = createRouter({
       name: 'error',
       component: ErrorView
     },
-    { path: '/cat/:id', component: () => import('../components/CatDetailsComponent.vue') }
+    { path: '/cat/:id', component: () => import('../components/CatDetailsComponent.vue') },
+    {
+      path: '/create',
+      name: 'create',
+      component: () => import('../views/CreateCatView.vue')
+    }
   ]
 })
 
